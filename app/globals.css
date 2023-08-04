@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  font-size: 62.5%;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.padding-top-screen{
+  top: 100vh;
+  top: 100svh;
+}
+.portable-h1{
+  max-width: 13ch;
+}
