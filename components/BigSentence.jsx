@@ -7,7 +7,7 @@ export default function BigSentence({ heroData }) {
   return (
     <div className="h-screen flex items-center justify-center" >
       <div className="flex justify-center">
-      <div className="text-center portable-h1 text-h1-mobile uppercase ">
+      <div className="text-center portable-h1 romie font-light text-h1-mobile uppercase ">
       <PortableText value={heroData[0].bigSentence} />
 
       </div>

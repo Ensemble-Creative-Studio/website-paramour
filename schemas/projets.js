@@ -10,6 +10,7 @@ export default {
       name: 'client',
       type: 'string',
       title: 'Client',
+      required: true, // Add required property
     },
     {
       name: 'tags',
@@ -21,6 +22,7 @@ export default {
           to: [{ type: 'tag' }],
         },
       ],
+      required: true, // Add required property
     },
     {
       title: 'Slug',
@@ -31,20 +33,22 @@ export default {
         source: 'client',
         maxLength: 96,
       },
+      required: true, // Add required property
     },
     orderRankField({ type: 'projets', name: 'name' }),
     {
       name: 'informations',
       type: 'text',
       title: 'Infos',
+      required: true, // Add required property
     },
     {
       name: 'imagesGallery',
       title: 'Images gallery',
       type: 'array',
       description: 'Image size should be < 5Mo',
-      of: [{ type: 'image' }]
-     },
-
+      of: [{ type: 'image' }],
+      required: true, // Add required property
+    },
   ],
 };

@@ -15,6 +15,15 @@ export default {
           type: 'image',
           title: 'Image',
           description: 'Upload an image',
+          options: {
+            metadata: [
+              'blurhash',   // Default: included
+              'lqip',       // Default: included
+              'palette',    // Default: included
+              'exif',       // Default: not included
+              'location',   // Default: not included
+            ],
+          }
    
         },
         {
@@ -33,6 +42,13 @@ export default {
       title: "Presentation Text",
       description:'Text in bold will use the TWK Everett font',
       rows: 5,
+    },
+    {
+      name: 'projects',
+      type: 'array',
+      title: 'Select Projects',
+      description: 'Select projects to feature on the homepage',
+      of: [{ type: 'reference', to: { type: 'projets' } }], // Replace 'project' with the actual name of the document type representing projects.
     },
   ],
   

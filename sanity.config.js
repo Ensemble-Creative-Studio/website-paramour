@@ -58,6 +58,17 @@ export default defineConfig({
              
               S.divider(),
               orderableDocumentListDeskItem({type: 'tag',  title: 'Categories', S, context}),
+              S.listItem()
+              .title("Featured Clients")
+              .id("featuredClients")
+              .child(
+                // Instead of rendering a list of documents, we render a single
+                // document, specifying the `documentId` manually to ensure
+                // that we're editing the single instance of the document
+                S.document()
+                  .schemaType("featuredClients")
+                  .documentId("featuredClients")
+              ),
               S.divider(),
             // Regular document types
             S.listItem()

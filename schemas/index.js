@@ -8,5 +8,6 @@ import projets from './projets'
 import pageLegale from './pageLegale'
 import tag from './tag'
 import infos from './infos'
+import featuredClient from './featuredClient'
 
-export const schemaTypes = [blockContent,pet,headerinfo,homePage, passport, projets, footer, pageLegale, tag,infos]
+export const schemaTypes = [blockContent,pet,headerinfo,homePage, passport, projets, footer, pageLegale, tag,infos, featuredClient]

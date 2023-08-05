@@ -2,7 +2,7 @@
 
 import { useContext } from 'react';
 import { ProjectContext } from './utils/useProjects';
-
+import WorksGrid from './grid/WorksGrid';
 
 
  export default function ProjectList() {

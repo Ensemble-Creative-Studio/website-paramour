@@ -11,7 +11,7 @@ export default function TagList() {
     <div className="h-screen flex justify-center items-center ">
       <div className="flex flex-col text-center">
         <span
-          className={currentTag === null ? "font-medium" : ""}
+          className={currentTag === null ? "selected" : "notselected"}
           onClick={() => setCurrentTag(null)}
         >
           {" "}
@@ -20,7 +20,7 @@ export default function TagList() {
 
         {tagData.map((tag, index) => (
           <span
-            className={`uppercase ${tag === currentTag ? "font-medium	" : ""}`}
+            className={`uppercase ${tag === currentTag ? "selected" : "notselected"}`}
             key={tag._id}
             onClick={() => setCurrentTag(tag)}
           >

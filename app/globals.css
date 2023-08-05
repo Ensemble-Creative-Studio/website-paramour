@@ -2,12 +2,48 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'Romie';
+  src: local('Romie-Light'), local('Romie-Light'),
+      url('../public/fonts/Romie-Light.woff2') format('woff2'),
+      url('../public/fonts/Romie-Light.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Romie';
+  src: local('Romie-Medium'), local('Romie-Medium'),
+      url('../public/fonts/Romie-Medium.woff2') format('woff2'),
+      url('../public/fonts/Romie-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'TWKEverett-Medium';
+  src: local('TWKEverett-Medium'), local('TWKEverett-Medium'),
+      url('../public/fonts/TWKEverett-Medium.woff2') format('woff2'),
+      url('../public/fonts/TWKEverett-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+}
 html {
   font-size: 62.5%;
 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+body{
+  color: #474747;
+}
+strong, .everest, h2{
+  font-family: 'TWKEverett-Medium';
+}
+
+.romie, h4{
+font-family: 'Romie';
+}
+
+
 .padding-top-screen{
   top: 100vh;
   top: 100svh;
@@ -21,7 +57,7 @@ html {
 
 .credits-serif{
   color: var(--text-grey, #474747);
-font-family: Romie;
+font-family: "Romie";
 font-size: 2.4rem;
 font-style: normal;
 font-weight: 300;
@@ -33,10 +69,100 @@ text-transform: uppercase;
   color: var(--text-grey, #474747);
 text-align: center;
 /* M/Credits/Sans */
-font-family: TWK Everett;
+font-family: 'TWKEverett-Medium';
 font-size: 2.2rem;
 font-style: normal;
 font-weight: 500;
 line-height: 107%; /* 23.54px */
 text-transform: uppercase;
+}
+
+.projectTitle{
+  font-size: 3.9rem;
+  line-height: 89%; /* 34.71px */
+}
+.projectTag{
+  font-size: 1.7rem;
+font-style: normal;
+font-weight: 500;
+line-height: 86%; /* 14.938px */
+letter-spacing: 0.347px;
+}
+header a {
+  font-size: 1.6rem;
+  color: #8F8F8F;
+}
+
+header a.active{
+  color: var(--text-grey, #474747);
+
+}
+
+.sticky-middle {
+  position: sticky;
+  top: 50%; /* Position it at the middle of the viewport */
+  transform: translateY(-50%); /* Center the element vertically */
+}
+
+/* FOOTER */
+.menuFooter{
+  font-family: "Romie";
+font-size: 1.7rem;
+font-style: normal;
+font-weight: 500;
+color: black;
+line-height: 86%; /* 14.938px */
+letter-spacing: 0.347px;
+text-transform: uppercase;
+}
+.itemFooter{
+  color: var(--black, #000);
+
+/* D/Menu/Sans */
+
+font-size: 1.6rem;
+font-style: normal;
+font-weight: 500;
+line-height: 120%; /* 14.56px */
+text-transform: uppercase;
+}
+.itemFooter.grey, .menuFooter.grey{
+  color: #474747;
+}
+
+/* Client List */
+.selected{
+  color: var(--text-grey, #474747);
+  font-family: 'TWKEverett-Medium';
+font-size: 5rem;
+font-style: normal;
+font-weight: 500;
+line-height: 87%; /* 43.5px */
+}
+.notselected{
+  color: #B9B9B9;
+  font-family: "Romie";
+font-size: 5rem;
+font-style: normal;
+font-weight: 300;
+line-height: 84%; /* 42px */
+letter-spacing: -1.5px;
+text-transform: uppercase;
+}
+
+/* Credit */
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    visibility: visible;
+  }
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+/* Apply the animation to the element you want to fade out */
+.animation-fadeout  {
+  animation: fadeOut 0.6s forwards 1s ease-out;
 }

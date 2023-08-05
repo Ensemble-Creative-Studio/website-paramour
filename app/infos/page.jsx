@@ -1,16 +1,20 @@
 import "../globals.css";
-import Image from "next/image";
 import Hero from "@/components/Hero";
-import BigSentence from "@/components/BigSentence";
 import MedieumSentence from "@/components/MediumSentence";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { getInfos, getFooter, getPageLegal } from "../../sanity/sanity-util";
+import ClientList from "@/components/ClientList";
+import Layout from "@/components/transition/PageTransition";
+import { getInfos, getFooter, getPageLegal,getClient } from "../../sanity/sanity-util";
 export default async function Infos() {
   const heroData = await getInfos();``
 const footerData = await getFooter();
+const clientData = await getClient();
+
 const pageLegalData = await getPageLegal();
   return (
+    <Layout>
+
     <div className="">
       <Header/>
       <main>
@@ -24,11 +28,15 @@ const pageLegalData = await getPageLegal();
                 <h3 className="credits-sans">SERVICES</h3>
                 <MedieumSentence heroData={heroData[0].serviceText} />
             </div>
+            <ClientList clientData={clientData} />
+
             <Footer footerData={footerData} pageLegalData={pageLegalData}/>
         </div>
        
       </main>
  
     </div>
+    </Layout>
+
   );
 }
