@@ -6,14 +6,22 @@ export default {
  
     fields: [
       {
-        name: 'footerText',
-        type: 'text',
-        title: 'Phrase Contact',
+        name: "adressText",
+        type: "blockContent",
+        title: "Adress text",
+        rows: 5,
       },
       {
-        name: 'footerTextsecond',
-        type: 'text',
-        title: 'Deuxième phrase Contact',
+        name: "contactText",
+        type: "blockContent",
+        title: "Contact text",
+        rows: 5,
+      },
+      {
+        name: "SocialText",
+        type: "blockContent",
+        title: "Social text",
+        rows: 5,
       },
       {
         name: "texts",
@@ -23,12 +31,13 @@ export default {
           {
             type: "object",
             fields: [
+     
               {
-                name: "text",
-                type: "string",
-                title: "Texte",
+                name: "referenceToPageFooter",
+                type: "reference",
+                title: "Reference to Page Footer",
+                to: [{ type: "pageFooter" }], // Replace "pageFooter" with the actual name of the pageFooter document type
               },
-        
             ],
           },
         ],

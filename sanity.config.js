@@ -27,30 +27,7 @@ export default defineConfig({
         S.list()
           .title("Content")
           .items([
-      //       S.listItem()
-      //       .title("Overlay")
-      //       .id("overlay")
-      //       .child(
-      //         // Instead of rendering a list of documents, we render a single
-      //         // document, specifying the `documentId` manually to ensure
-      //         // that we're editing the single instance of the document
-      //         S.document()
-      //           .schemaType("overlay")
-      //           .documentId("overlay")
-      //       ),
-      //  S.divider(),
-            // Our singleton type has a list item with a custom child
-            // S.listItem()
-            //   .title("Header")
-            //   .id("header-info")
-            //   .child(
-            //     // Instead of rendering a list of documents, we render a single
-            //     // document, specifying the `documentId` manually to ensure
-            //     // that we're editing the single instance of the document
-            //     S.document()
-            //       .schemaType("header-info")
-            //       .documentId("header-info")
-            //   ),
+
               S.listItem()
               .title("HomePage")
               .id("homePage")
@@ -65,30 +42,41 @@ export default defineConfig({
              
               orderableDocumentListDeskItem({type: 'projets',  title: 'Projects', S, context}),
               // S.documentTypeListItem("projets").title("Projets"),
-       
-             
-             
               S.listItem()
-              .title("Footer")
-              .id("footer")
+              .title("Infos")
+              .id("infos")
               .child(
                 // Instead of rendering a list of documents, we render a single
                 // document, specifying the `documentId` manually to ensure
                 // that we're editing the single instance of the document
                 S.document()
-                  .schemaType("footer")
-                  .documentId("footer")
+                  .schemaType("infos")
+                  .documentId("infos")
               ),
+             
+             
+             
               S.divider(),
               orderableDocumentListDeskItem({type: 'tag',  title: 'Categories', S, context}),
               S.divider(),
             // Regular document types
+            S.listItem()
+            .title("Footer")
+            .id("footer")
+            .child(
+              // Instead of rendering a list of documents, we render a single
+              // document, specifying the `documentId` manually to ensure
+              // that we're editing the single instance of the document
+              S.document()
+                .schemaType("footer")
+                .documentId("footer")
+            ),
             S.documentTypeListItem("pageFooter").title("Page légales"),
 
 
           ]),
     }),
-
+visionTool(),
     dashboardTool({
       widgets: [
         netlifyWidget({

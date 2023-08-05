@@ -1,20 +1,30 @@
-import Image from 'next/image'
-import Hero from '@/components/Hero';
-import BigSentence from '@/components/BigSentence';
-import {
-  getHero,
+import React from "react";
+import "../globals.css";
+import Header from "@/components/Header";
+import TagList from "@/components/TagList";
+import ProjectList from "@/components/ProjectList";
+import { TagProvider } from "@/components/utils/useTags";
+import { ProjectProvider } from "@/components/utils/useProjects";
+import { CurrentTagProvider } from "@/components/utils/CurrentTagContext";
+import { getTag, getProjects } from "../../sanity/sanity-util";
 
-} from "../sanity/sanity-util";
-export default async function Home() {
-  const heroData = await getHero();
+export default async function Work() {
+  const tagData = await getTag();
+  const projectsData = await getProjects();
+
   return (
-    <main className="">
-   <Hero  heroData={heroData}/>
-   <div className='z-10 padding-top-screen relative bg-white'>
-   <BigSentence  heroData={heroData}/>
-   </div>
-  
-
-    </main>
-  )
+    <CurrentTagProvider>
+      <ProjectProvider initialData={projectsData}>
+        <TagProvider initialData={tagData}>
+          <div>
+            <Header />
+            <main>
+              <TagList />
+              <ProjectList />
+            </main>
+          </div>
+        </TagProvider>
+      </ProjectProvider>
+    </CurrentTagProvider>
+  );
 }
