@@ -1,5 +1,6 @@
 "use client";
 import { Inter } from "next/font/google";
+import { AnimatePresence } from "framer-motion";
 const inter = Inter({ subsets: ["latin"] });
 
 // export const metadata = {
