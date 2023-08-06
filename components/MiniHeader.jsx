@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react"; // Import the useState hook
 import Link from "next/link";
-
+import HeaderLink from "./utils/HeaderLink";
 export default function MiniHeader({ projectData }) {
   // Step 1: Add state variable to keep track of visibility
   const [isVisible, setIsVisible] = useState(false);
@@ -20,9 +20,9 @@ export default function MiniHeader({ projectData }) {
 
   return (
     <header className="sticky h-28 px-6 left-0 flex justify-between w-full top-10 z-20 items-center">
-      <Link className="itemFooter uppercase leading-none" href="/works" onClick={handleClick}>
-        Close
-      </Link>
+      <HeaderLink  href="/works" >
+        <p className="itemFooter uppercase leading-none">Close</p>
+      </HeaderLink>
       <span
         className="uppercase menuFooter leading-none"
         onClick={handleInfosClick} // Step 2: Attach the event handler to the "Infos" element
