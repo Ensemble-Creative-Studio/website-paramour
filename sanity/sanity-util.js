@@ -60,7 +60,23 @@ export async function getTag() {
 }
 export async function getProjects() {
   return client.fetch(
-    groq`*[_type == 'projets']{..., tags[]->}|order(orderRank)`
+    groq`*[_type == 'projets']{..., tags[]->,
+     "firstImage": imagesGallery[0].asset->{
+        url,
+      
+        metadata
+    },
+    "secondImage": imagesGallery[1].asset->{
+        url,
+      
+        metadata
+    },
+    "videosLoop": videosGallery[]->{
+      urlLoop,
+      
+      
+    },
+    }|order(orderRank)`
   );
 }
 export async function getProjectBySlug(slug) {

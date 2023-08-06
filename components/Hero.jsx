@@ -30,8 +30,8 @@ export default function Hero({ heroData }) {
             src={urlForImage(heroData[0].imageOrUrl.image.asset._ref)}
             alt="Image"
             className="w-full object-cover h-full"
-            width={2000}
-            height={1500}
+            width={1200}
+            height={1000}
             priority
           />
         </div>

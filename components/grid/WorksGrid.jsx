@@ -1,41 +1,42 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import StickyMiddleComponent from './StickyMiddleComponent';
+import StickyMiddleComponent from "./StickyMiddleComponent";
+import RandomJustifyImagePair from "./gridUtils/RandomJustifyImagePair";
 
-export default function WorksGrid({ projectsData }) {
-  const projects = heroData[0].projects;
-
+export default function WorksGrid({ filteredProject }) {
   return (
     <div>
-      <div className="romie font-light uppercase text-center text-h1-mobile py-28">
-        Featured <br /> Projects
-      </div>
-      {projects.map((project, index) => {
+      {filteredProject.map((project, index) => {
         const isWide = project.firstImage.metadata.dimensions.aspectRatio >= 1;
         const tags = project.tags.map((tag) => tag.title).join(", ");
-
+        const hasUrlLoop = project.videosGallery && project.videosGallery[0]?.urlLoop; // Check if videosGallery exists and is not empty
         return (
-          <div className="pt-12" key={index}>
+          <div className="pt-12 px-6" key={index}>
             <StickyMiddleComponent client={project.client} tags={tags} />
-            <Link
-              className="flex justify-center pt-16 pb-48"
-              href={`/works/${project.slug.current}`}
-            >
-              <div
-                className={`relative px-6  h-auto ${
-                  isWide ? "w-full" : "w-4/5"
-                }`}
-              >
-                <Image
-                  src={project.firstImage.url}
-                  alt={project.client}
-                  className="w-full object-cover h-full"
-                  width={1000}
-                  height={1000}
-                />
-              </div>
-            </Link>
+            {isWide ? (
+              <Link href={`/works/${project.slug.current}`}>
+                <div className="relative  w-full h-auto pt-16 pb-48">
+                  <Image
+                    src={project.firstImage.url}
+                    alt={project.client}
+                    className="w-full object-cover h-full"
+                    width={1000}
+                    height={1000}
+                  />
+                </div>
+              </Link>
+            ) : (
+              <Link href={`/works/${project.slug.current}`}>
+                  <RandomJustifyImagePair
+                    firstImage={project.firstImage.url}
+                    secondImage={project.secondImage.url}
+                    alt={project.client}
+                    urlLoop={hasUrlLoop}
+                  />
+           
+              </Link>
+            )}
           </div>
         );
       })}

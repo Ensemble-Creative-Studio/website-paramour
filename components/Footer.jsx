@@ -13,7 +13,7 @@ export default function Footer({ footerData, pageLegalData }) {
           className=" object-contain  mix-blend-difference  "
           priority
           src={logo}
-          width={210}
+          width={180}
           height={180}
           alt="Logo param"
         />

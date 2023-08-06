@@ -50,5 +50,30 @@ export default {
       of: [{ type: 'image' }],
       required: true, // Add required property
     },
+    {
+      "name": "videosGallery",
+      "title": "Videos gallery",
+      "type": "array",
+      "description": "Video links for looping and full videos.",
+      "of": [
+        {
+          "type": "object",
+          "title": "VideoItem",
+          "fields": [
+            {
+              "name": "urlLoop",
+              "type": "url",
+              "title": "URL for Looping Video"
+            },
+            {
+              "name": "urlVideo",
+              "type": "url",
+              "title": "URL for Full Video"
+            }
+          ]
+        }
+      ]
+    }
+    
   ],
 };
