@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import StickyMiddleComponent from './StickyMiddleComponent';
-
+import HeaderLink from "../utils/HeaderLink";
 export default function FeaturedGridHome({ heroData }) {
   const projects = heroData[0].projects;
 
@@ -18,10 +18,11 @@ export default function FeaturedGridHome({ heroData }) {
         return (
           <div className="pt-12" key={index}>
             <StickyMiddleComponent client={project.client} tags={tags} />
-            <Link
-              className="flex justify-center pt-16 pb-48"
+            <HeaderLink
+             
               href={`/works/${project.slug.current}`}
             >
+              <div  className="flex justify-center pt-16 pb-48">
               <div
                 className={`relative px-6  h-auto ${
                   isWide ? "w-full" : "w-4/5"
@@ -35,7 +36,9 @@ export default function FeaturedGridHome({ heroData }) {
                   height={1000}
                 />
               </div>
-            </Link>
+              </div>
+             
+            </HeaderLink>
           </div>
         );
       })}

@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import StickyMiddleComponent from "./StickyMiddleComponent";
 import RandomJustifyImagePair from "./gridUtils/RandomJustifyImagePair";
-
+import HeaderLink from "../utils/HeaderLink";
 export default function WorksGrid({ filteredProject }) {
   return (
     <div>
@@ -15,7 +15,7 @@ export default function WorksGrid({ filteredProject }) {
           <div className="pt-12 px-6" key={index}>
             <StickyMiddleComponent client={project.client} tags={tags} />
             {isWide ? (
-              <Link href={`/works/${project.slug.current}`}>
+              <HeaderLink href={`/works/${project.slug.current}`}>
                 <div className="relative  w-full h-auto pt-16 pb-48">
                   <Image
                     src={project.firstImage.url}
@@ -25,9 +25,9 @@ export default function WorksGrid({ filteredProject }) {
                     height={1000}
                   />
                 </div>
-              </Link>
+              </HeaderLink>
             ) : (
-              <Link href={`/works/${project.slug.current}`}>
+              <HeaderLink  href={`/works/${project.slug.current}`}>
                   <RandomJustifyImagePair
                     firstImage={project.firstImage.url}
                     secondImage={project.secondImage.url}
@@ -35,7 +35,7 @@ export default function WorksGrid({ filteredProject }) {
                     urlLoop={hasUrlLoop}
                   />
            
-              </Link>
+              </HeaderLink>
             )}
           </div>
         );

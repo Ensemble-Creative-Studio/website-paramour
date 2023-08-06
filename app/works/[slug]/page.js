@@ -17,7 +17,7 @@ export default async function Page({ params }) {
             <h2 className="projectTitle uppercase text-center">
                 {projectData[0].client}
             </h2>
-            <div className="flex gap-2 justify-center pb-2">
+            <div className="flex gap-2 justify-center ">
             {projectData[0].tags.map((tag, index) => (
               <h4 className="menuFooter grey pt-4" key={index}>
                 {tag.title}

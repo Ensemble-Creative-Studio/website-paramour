@@ -10,10 +10,17 @@ export default function MiniHeader({ projectData }) {
   const handleInfosClick = () => {
     setIsVisible(!isVisible);
   };
+  const handleClick = (e) => {
+
+    window.scrollTo(0, 0);
+    
+    // Now push the new route
+
+  };
 
   return (
     <header className="sticky h-28 px-6 left-0 flex justify-between w-full top-10 z-20 items-center">
-      <Link className="itemFooter uppercase leading-none" href="/works">
+      <Link className="itemFooter uppercase leading-none" href="/works" onClick={handleClick}>
         Close
       </Link>
       <span
