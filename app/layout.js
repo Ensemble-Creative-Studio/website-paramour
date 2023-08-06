@@ -1,4 +1,4 @@
-
+"use client";
 import { Inter } from "next/font/google";
 const inter = Inter({ subsets: ["latin"] });
 
@@ -10,9 +10,11 @@ const inter = Inter({ subsets: ["latin"] });
 export default function RootLayout({ children, params }) {
   return (
     <html lang="en">
+      <AnimatePresence initial={false} mode="popLayout">
         <body className={inter.className}>
           {children}
         </body>
+      </AnimatePresence>
     </html>
   );
 }

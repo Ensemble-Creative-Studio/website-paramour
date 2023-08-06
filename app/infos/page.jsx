@@ -4,6 +4,7 @@ import MedieumSentence from "@/components/MediumSentence";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ClientList from "@/components/ClientList";
+import Layout from "@/components/transition/PageTransition";
 import { getInfos, getFooter, getPageLegal,getClient } from "../../sanity/sanity-util";
 export default async function Infos() {
   const heroData = await getInfos();``
@@ -12,7 +13,7 @@ const clientData = await getClient();
 
 const pageLegalData = await getPageLegal();
   return (
- 
+    <Layout>
 
     <div className="">
       <Header/>
@@ -35,7 +36,7 @@ const pageLegalData = await getPageLegal();
       </main>
  
     </div>
-
+    </Layout>
 
   );
 }
