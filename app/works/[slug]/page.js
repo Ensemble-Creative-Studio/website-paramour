@@ -8,7 +8,6 @@ import { getProjectBySlug } from "../../../sanity/sanity-util";
 import Layout from "@/components/transition/PageTransition";
 export default async function Page({ params }) {
   const projectData = await getProjectBySlug(params.slug);
-  console.log(projectData)
   return (
     <Layout>
 
