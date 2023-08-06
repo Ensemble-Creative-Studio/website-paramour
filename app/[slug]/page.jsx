@@ -4,7 +4,6 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import ContactSentence from "@/components/ContactSentence";
 import Footer from "@/components/Footer";
-import Layout from "@/components/transition/PageTransition";
 import { getFooter, getPageLegal } from "../../sanity/sanity-util";
 export default async function Legal() {
   const pathname = usePathname();
@@ -18,7 +17,7 @@ export default async function Legal() {
   );
 
   return (
-    <Layout>
+    
     <div className="bg-white">
       <Link href="./">Go back</Link>
 
@@ -29,7 +28,7 @@ export default async function Legal() {
       </main>
       <Footer footerData={footerData} pageLegalData={allPageLegalData} />
     </div>
-    </Layout>
+ 
 
   );
 }

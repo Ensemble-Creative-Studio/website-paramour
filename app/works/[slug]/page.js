@@ -5,11 +5,10 @@ import BigSentence from "@/components/BigSentence";
 import MiniHeader from "@/components/MiniHeader";
 import GalleryMobile from "@/components/gallery/GalleryMobile";
 import { getProjectBySlug } from "../../../sanity/sanity-util";
-import Layout from "@/components/transition/PageTransition";
 export default async function Page({ params }) {
   const projectData = await getProjectBySlug(params.slug);
   return (
-    <Layout>
+
 
     <div className="px-6">
         <div className="animation-fadeout opacity-100 fixed top-0 left-0 z-30 h-screen w-screen bg-white flex justify-center items-center">
@@ -29,6 +28,6 @@ export default async function Page({ params }) {
       <MiniHeader projectData={projectData} />
       <GalleryMobile projectData={projectData} />
     </div>
-    </Layout>
+ 
   );
 }

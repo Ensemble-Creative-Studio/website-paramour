@@ -6,7 +6,6 @@ import Header from "@/components/Header";
 import FeaturedGridHome from "@/components/grid/FeaturedClientHome";
 import ClientList from "@/components/ClientList";
 import Footer from "@/components/Footer";
-import Layout from "@/components/transition/PageTransition";
 import { getHero, getClient,getFooter,getPageLegal } from "../sanity/sanity-util";
 export default async function Home() {
   const heroData = await getHero();
@@ -16,7 +15,7 @@ export default async function Home() {
 
 
   return (
-    <Layout>
+   
 
     <div className="">
       <Header/>
@@ -31,7 +30,7 @@ export default async function Home() {
         </div>
       </main>
     </div>
-    </Layout>
+   
 
   );
 }
