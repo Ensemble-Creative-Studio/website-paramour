@@ -9,7 +9,6 @@ const inter = Inter({ subsets: ["latin"] });
 // }
 
 export default function RootLayout({ children, params }) {
-console.log(pathname)
   return (
     <html lang="en">
       <AnimatePresence initial={false} mode="popLayout">
