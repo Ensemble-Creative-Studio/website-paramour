@@ -1,7 +1,6 @@
 "use client";
 import { Inter } from "next/font/google";
 import { AnimatePresence } from "framer-motion";
-import { usePathname, useSearchParams } from "next/navigation";
 const inter = Inter({ subsets: ["latin"] });
 
 // export const metadata = {
@@ -10,7 +9,6 @@ const inter = Inter({ subsets: ["latin"] });
 // }
 
 export default function RootLayout({ children, params }) {
-  const pathname = usePathname();
 console.log(pathname)
   return (
     <html lang="en">
