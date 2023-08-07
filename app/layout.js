@@ -1,4 +1,5 @@
 "use client";
+import { useEffect } from "react";
 import { Inter } from "next/font/google";
 import { AnimatePresence } from "framer-motion";
 const inter = Inter({ subsets: ["latin"] });
@@ -12,7 +13,13 @@ export default function RootLayout({ children, params }) {
   const lenis = useLenis(({ scroll }) => {
     // called every scroll
   })
-  
+  useEffect(() => {
+    if (lenis && lenis.scrollTo) {
+      lenis.scrollTo({ top: 0, behavior: 'smooth' }); 
+      // assuming lenis.scrollTo accepts an object with a similar structure to window.scrollTo
+    }
+  }, [params.slug, lenis]); // This effect will run every time params.slug changes, or lenis is defined
+
   return (
     <ReactLenis root options={{ lerp: 0.08, wheelMultiplier: 0.5 }}>
 
@@ -20,9 +27,9 @@ export default function RootLayout({ children, params }) {
     <html lang="en">
       <AnimatePresence
         initial={true}
-        onExitComplete={() => console.log("jj")}
+  
       >
-          <body className={inter.className}>{children}</body>
+          <body key={params.slug} className={inter.className}>{children}</body>
       </AnimatePresence>
     </html>
     </ReactLenis>

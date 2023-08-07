@@ -1,9 +1,8 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
-
+import FadingImage from '@/components/utils/FadeInImage';
 function RandomJustifyImagePair({ firstImage, secondImage, alt, urlLoop }) {
-  console.log(urlLoop);
   const [justifyFirst, setJustifyFirst] = useState('justify-start');
   const [firstImageWidth, setFirstImageWidth] = useState('w-1/2');
   const [secondImageWidth, setSecondImageWidth] = useState('w-1/2');
@@ -46,20 +45,20 @@ function RandomJustifyImagePair({ firstImage, secondImage, alt, urlLoop }) {
         </div>
       ) : (
         // Render the image if urlLoop is not provided
-        <div className={`${justifyFirst} flex w-full h-auto`}>
-          <Image
+    
+          <FadingImage
             src={firstImage}
             alt={alt}
-            className="w-full object-cover h-full"
+            className={`${justifyFirst} flex w-full h-auto`}
             style={{ width: firstImageWidth }}
             width={1000}
             height={1000}
           />
-        </div>
+     
       )}
-      <div className={`${justifyFirst === 'justify-start' ? 'justify-end' : 'justify-start'} flex w-full h-auto`}>
-        <Image src={secondImage} alt={alt} style={{ width: secondImageWidth }} width={1000} height={1000} />
-      </div>
+   
+        <FadingImage className={`${justifyFirst === 'justify-start' ? 'justify-end' : 'justify-start'} flex w-full h-auto`} src={secondImage} alt={alt} style={{ width: secondImageWidth }} width={1000} height={1000} />
+   
     </div>
   );
 }

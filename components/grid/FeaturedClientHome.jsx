@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import StickyMiddleComponent from './StickyMiddleComponent';
 import HeaderLink from "../utils/HeaderLink";
+import FadingImage from "../utils/FadeInImage";
 export default function FeaturedGridHome({ heroData }) {
   const projects = heroData[0].projects;
 
@@ -18,27 +19,26 @@ export default function FeaturedGridHome({ heroData }) {
         return (
           <div className="pt-12" key={index}>
             <StickyMiddleComponent client={project.client} tags={tags} />
-            <HeaderLink
-             
+            <Link
+              className="flex justify-center pt-16 pb-48"
               href={`/works/${project.slug.current}`}
             >
-              <div  className="flex justify-center pt-16 pb-48">
               <div
                 className={`relative px-6  h-auto ${
                   isWide ? "w-full" : "w-4/5"
                 }`}
               >
-                <Image
+                            <FadingImage src={project.firstImage.url} alt="Your Image" width={1000} height={1000} />
+
+                {/* <Image
                   src={project.firstImage.url}
                   alt={project.client}
                   className="w-full object-cover h-full"
                   width={1000}
                   height={1000}
-                />
+                /> */}
               </div>
-              </div>
-             
-            </HeaderLink>
+            </Link>
           </div>
         );
       })}

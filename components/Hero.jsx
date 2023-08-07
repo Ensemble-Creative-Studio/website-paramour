@@ -7,14 +7,17 @@ export default function Hero({ heroData }) {
   return (
     <div className="fixed top-0 w-full -z-10" id="hero">
         <div className="flex justify-center items-center absolute left-0 top-0 h-screen w-screen">
-        <Image
-        className=" object-contain  mix-blend-difference  "
+          <div className="w-full h-auto flex justify-center items-center md:h-2/5">
+          <Image
+        className=" object-contain h-full md:w-full  mix-blend-difference  "
         priority
         src={logo}
         width={210}
         height={180}
         alt="Logo param"
       />
+          </div>
+   
         </div>
  
       {heroData[0].imageOrUrl && heroData[0].imageOrUrl.url ? (
@@ -29,7 +32,7 @@ export default function Hero({ heroData }) {
           <Image
             src={urlForImage(heroData[0].imageOrUrl.image.asset._ref)}
             alt="Image"
-            className="w-full object-cover h-full"
+            className="w-full object-cover h-full md:object-top"
             width={1200}
             height={1000}
             priority

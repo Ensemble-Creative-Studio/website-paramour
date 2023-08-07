@@ -1,18 +1,18 @@
 import Image from "next/image";
 import Link from "next/link";
 
-export default function ClientList({ clientData }) {
-   
+export default function ClientList({ clientData, fontSize }) {
+   console.log(fontSize)
   return (
-    <div className="px-6 py-24" >
-           <div className="romie font-light uppercase text-center text-h1-mobile pt-28 pb-1 ">
-        Our  Client 
-      </div>
+    <div className="px-6 pb-24" >
+       
       {clientData[0].clients.map((client, index) => (
         <div key={index} className="">
           <Link  href={`/works/${client.slug.current}`}>
             
-              <h2 className="projectTitle everest uppercase text-center pb-1 ">{client.client}</h2>
+          <h2 className={` everest uppercase text-center pb-1 ${fontSize}`} >
+          {client.client}
+            </h2>
               <Image 
               className="hidden"
                 src={client.firstImage.url}

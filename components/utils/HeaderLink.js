@@ -11,7 +11,6 @@ const HeaderLink = ({ href, children }) => {
   useEffect(() => {
     const url = `${pathname}${searchParams}`;
     setIsActive(url === href);
-    console.log(url);
   }, [pathname, searchParams, href]);
 
   const handleClick = (e) => {
@@ -23,7 +22,7 @@ const HeaderLink = ({ href, children }) => {
   };
 
   return (
-    <Link className={isActive ? "active" : ""} href={href} onClick={handleClick}>
+    <Link className={isActive ? "active" : ""} href={href}>
       {children}
     </Link>
   );

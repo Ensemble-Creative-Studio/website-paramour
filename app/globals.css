@@ -3,26 +3,26 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: 'Romie';
-  src: local('Romie-Light'), local('Romie-Light'),
-      url('../public/fonts/Romie-Light.woff2') format('woff2'),
-      url('../public/fonts/Romie-Light.woff') format('woff');
+  font-family: "Romie";
+  src: local("Romie-Light"), local("Romie-Light"),
+    url("../public/fonts/Romie-Light.woff2") format("woff2"),
+    url("../public/fonts/Romie-Light.woff") format("woff");
   font-weight: 300;
   font-style: normal;
 }
 @font-face {
-  font-family: 'Romie';
-  src: local('Romie-Medium'), local('Romie-Medium'),
-      url('../public/fonts/Romie-Medium.woff2') format('woff2'),
-      url('../public/fonts/Romie-Medium.woff') format('woff');
+  font-family: "Romie";
+  src: local("Romie-Medium"), local("Romie-Medium"),
+    url("../public/fonts/Romie-Medium.woff2") format("woff2"),
+    url("../public/fonts/Romie-Medium.woff") format("woff");
   font-weight: 500;
   font-style: normal;
 }
 @font-face {
-  font-family: 'TWKEverett-Medium';
-  src: local('TWKEverett-Medium'), local('TWKEverett-Medium'),
-      url('../public/fonts/TWKEverett-Medium.woff2') format('woff2'),
-      url('../public/fonts/TWKEverett-Medium.woff') format('woff');
+  font-family: "TWKEverett-Medium";
+  src: local("TWKEverett-Medium"), local("TWKEverett-Medium"),
+    url("../public/fonts/TWKEverett-Medium.woff2") format("woff2"),
+    url("../public/fonts/TWKEverett-Medium.woff") format("woff");
   font-weight: 500;
   font-style: normal;
 }
@@ -32,70 +32,71 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-body{
+body {
   color: #474747;
 }
-strong, .everest, h2{
-  font-family: 'TWKEverett-Medium';
+strong,
+.everest,
+h2 {
+  font-family: "TWKEverett-Medium";
 }
 
-.romie, h4{
-font-family: 'Romie';
+.romie,
+h4 {
+  font-family: "Romie";
 }
 
-
-.padding-top-screen{
+.padding-top-screen {
   top: 100vh;
   top: 100svh;
 }
-.portable-h1{
+.portable-h1 {
   max-width: 13ch;
 }
-.portable-h3{
+.portable-h3 {
   max-width: 28ch;
 }
 
-.credits-serif{
+.credits-serif {
   color: var(--text-grey, #474747);
-font-family: "Romie";
-font-size: 2.4rem;
-font-style: normal;
-font-weight: 300;
-line-height: 100%;
-text-transform: uppercase;
+  font-family: "Romie";
+  font-size: 2.4rem;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 100%;
+  text-transform: uppercase;
 }
 
-.credits-sans{
+.credits-sans {
   color: var(--text-grey, #474747);
-text-align: center;
-/* M/Credits/Sans */
-font-family: 'TWKEverett-Medium';
-font-size: 2.2rem;
-font-style: normal;
-font-weight: 500;
-line-height: 107%; /* 23.54px */
-text-transform: uppercase;
+  text-align: center;
+  /* M/Credits/Sans */
+  font-family: "TWKEverett-Medium";
+  font-size: 2.2rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 107%; /* 23.54px */
+  text-transform: uppercase;
 }
 
-.projectTitle{
+.projectTitle {
   font-size: 3.9rem;
   line-height: 89%; /* 34.71px */
 }
-.projectTag{
+.projectTag {
   font-size: 1.7rem;
-font-style: normal;
-font-weight: 500;
-line-height: 86%; /* 14.938px */
-letter-spacing: 0.347px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 86%; /* 14.938px */
+  letter-spacing: 0.347px;
 }
 header a {
   font-size: 1.6rem;
-  color: #8F8F8F;
+  color: #8f8f8f;
 }
 
-header a.active{
+header a.active {
   color: var(--text-grey, #474747);
-
 }
 
 .sticky-middle {
@@ -105,49 +106,50 @@ header a.active{
 }
 
 /* FOOTER */
-.menuFooter{
+.menuFooter {
   font-family: "Romie";
-font-size: 1.7rem;
-font-style: normal;
-font-weight: 500;
-color: black;
-line-height: 86%; /* 14.938px */
-letter-spacing: 0.347px;
-text-transform: uppercase;
+  font-size: 1.7rem;
+  font-style: normal;
+  font-weight: 500;
+  color: black;
+  line-height: 86%; /* 14.938px */
+  letter-spacing: 0.347px;
+  text-transform: uppercase;
 }
-.itemFooter{
+.itemFooter {
   color: var(--black, #000);
 
-/* D/Menu/Sans */
+  /* D/Menu/Sans */
 
-font-size: 1.6rem;
-font-style: normal;
-font-weight: 500;
-line-height: 120%; /* 14.56px */
-text-transform: uppercase;
+  font-size: 1.6rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 120%; /* 14.56px */
+  text-transform: uppercase;
 }
-.itemFooter.grey, .menuFooter.grey{
+.itemFooter.grey,
+.menuFooter.grey {
   color: #474747;
 }
 
 /* Client List */
-.selected{
+.selected {
   color: var(--text-grey, #474747);
-  font-family: 'TWKEverett-Medium';
-font-size: 5rem;
-font-style: normal;
-font-weight: 500;
-line-height: 87%; /* 43.5px */
+  font-family: "TWKEverett-Medium";
+  font-size: 5rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 87%; /* 43.5px */
 }
-.notselected{
-  color: #B9B9B9;
+.notselected {
+  color: #b9b9b9;
   font-family: "Romie";
-font-size: 5rem;
-font-style: normal;
-font-weight: 300;
-line-height: 84%; /* 42px */
-letter-spacing: -1.5px;
-text-transform: uppercase;
+  font-size: 5rem;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 84%; /* 42px */
+  letter-spacing: -1.5px;
+  text-transform: uppercase;
 }
 
 /* Credit */
@@ -163,16 +165,12 @@ text-transform: uppercase;
 }
 
 /* Apply the animation to the element you want to fade out */
-.animation-fadeout  {
+.animation-fadeout {
   animation: fadeOut 0.6s forwards 1s ease-out;
 }
 
 html.lenis {
   height: auto;
-}
-
-.lenis.lenis-smooth {
-  scroll-behavior: auto;
 }
 
 .lenis.lenis-smooth [data-lenis-prevent] {
@@ -185,4 +183,36 @@ html.lenis {
 
 .lenis.lenis-scrolling iframe {
   pointer-events: none;
+}
+
+@media (min-width: 769px) {
+  /* Your styles for screens bigger than 768px go here */
+  /* For example: */
+  .text-h1-mobile {
+    font-family: Romie;
+    font-size: 11.2rem;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 86%; /* 97.094px */
+    text-transform: uppercase;
+  }
+  .text-h1-mobile strong {
+    font-size: 104px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 93%;
+  }
+  .portable-h1 {
+    max-width: 21ch;
+  }
+  .credits-serif {
+    font-size: 4.9rem;
+  }
+
+  .credits-sans {
+    font-size: 4.5rem;
+  }
+  .portable-h3{
+    max-width: 34ch;
+  }
 }

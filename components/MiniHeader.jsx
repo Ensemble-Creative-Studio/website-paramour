@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react"; // Import the useState hook
 import Link from "next/link";
-
+import HeaderLink from "./utils/HeaderLink";
 export default function MiniHeader({ projectData }) {
   // Step 1: Add state variable to keep track of visibility
   const [isVisible, setIsVisible] = useState(false);
@@ -10,17 +10,11 @@ export default function MiniHeader({ projectData }) {
   const handleInfosClick = () => {
     setIsVisible(!isVisible);
   };
-  const handleClick = (e) => {
 
-    window.scrollTo(0, 0);
-    
-    // Now push the new route
-
-  };
 
   return (
     <header className="sticky h-28 px-6 left-0 flex justify-between w-full top-10 z-20 items-center">
-      <Link className="itemFooter uppercase leading-none" href="/works" onClick={handleClick}>
+      <Link className="itemFooter uppercase leading-none" href="/works">
         Close
       </Link>
       <span
