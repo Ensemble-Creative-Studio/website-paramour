@@ -25,7 +25,7 @@ export default async function Home() {
         <Header />
         <main>
           <Hero heroData={heroData} />
-          <div className="z-10 padding-top-screen relative bg-white">
+          <div className=" padding-top-screen relative bg-white">
             <BigSentence heroData={heroData} />
             <FeaturedGridHome heroData={heroData} />
             <div className="romie font-light uppercase text-center text-h1-mobile pt-48 pb-1 ">

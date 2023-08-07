@@ -24,7 +24,7 @@ export default async function Infos() {
         <Header />
         <main>
           <Hero heroData={heroData} />
-          <div className="z-10 padding-top-screen relative bg-white px-6">
+          <div className="z-10 padding-top-screen relative bg-white px-6 md:px-10">
             <div className="pt-32 pb-16 md:pt-48 md:pb-24">
               <h3 className="credits-sans">ABOUT</h3>
               <MedieumSentence heroData={heroData[0].aboutText} />

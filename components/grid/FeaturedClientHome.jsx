@@ -1,8 +1,7 @@
 import React from "react";
 import Link from "next/link";
-import Image from "next/image";
-import StickyMiddleComponent from './StickyMiddleComponent';
-import HeaderLink from "../utils/HeaderLink";
+import DelayLink from "../utils/DelayLink";
+import StickyMiddleComponent from "./StickyMiddleComponent";
 import FadingImage from "../utils/FadeInImage";
 export default function FeaturedGridHome({ heroData }) {
   const projects = heroData[0].projects;
@@ -19,7 +18,7 @@ export default function FeaturedGridHome({ heroData }) {
         return (
           <div className="pt-12" key={index}>
             <StickyMiddleComponent client={project.client} tags={tags} />
-            <Link
+            <DelayLink
               className="flex justify-center pt-16 pb-48"
               href={`/works/${project.slug.current}`}
             >
@@ -28,11 +27,14 @@ export default function FeaturedGridHome({ heroData }) {
                   isWide ? "w-full" : "w-4/5"
                 }`}
               >
-                            <FadingImage src={project.firstImage.url} alt="Your Image" width={1000} height={1000} />
-
-      
+                <FadingImage
+                  src={project.firstImage.url}
+                  alt="Your Image"
+                  width={1000}
+                  height={1000}
+                />
               </div>
-            </Link>
+            </DelayLink>
           </div>
         );
       })}

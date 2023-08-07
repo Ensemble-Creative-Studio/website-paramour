@@ -16,10 +16,11 @@ export default async function Page({ params }) {
             </h2>
             <div className="flex gap-2 justify-center ">
             {projectData[0].tags.map((tag, index) => (
-              <h4 className="menuFooter grey pt-4" key={index}>
-                {tag.title}
-              </h4>
-            ))}
+                <h4 className="menuFooter grey pt-4" key={index}>
+                  {tag.title}
+                  {index !== projectData[0].tags.length - 1 && ", "}
+                </h4>
+              ))}
           </div>
         </div>
         </div>

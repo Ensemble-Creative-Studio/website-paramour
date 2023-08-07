@@ -1,10 +1,9 @@
 import React from "react";
 import Link from "next/link";
-import Image from "next/image";
 import FadingImage from "../utils/FadeInImage";
 import StickyMiddleComponent from "./StickyMiddleComponent";
 import RandomJustifyImagePair from "./gridUtils/RandomJustifyImagePair";
-import HeaderLink from "../utils/HeaderLink";
+import DelayLink from "../utils/DelayLink";
 export default function WorksGrid({ filteredProject }) {
   return (
     <div>
@@ -17,7 +16,7 @@ export default function WorksGrid({ filteredProject }) {
           <div className="pt-12 px-6" key={index}>
             <StickyMiddleComponent client={project.client} tags={tags} />
             {isWide ? (
-              <Link href={`/works/${project.slug.current}`}>
+              <DelayLink href={`/works/${project.slug.current}`}>
                 <div className="relative  w-full h-auto pt-16 pb-48">
                   <FadingImage
                     src={project.firstImage.url}
@@ -26,16 +25,16 @@ export default function WorksGrid({ filteredProject }) {
                     height={1000}
                   />
                 </div>
-              </Link>
+              </DelayLink>
             ) : (
-              <Link scroll={false} href={`/works/${project.slug.current}`}>
+              <DelayLink scroll={false} href={`/works/${project.slug.current}`}>
                 <RandomJustifyImagePair
                   firstImage={project.firstImage.url}
                   secondImage={project.secondImage.url}
                   alt={project.client}
                   urlLoop={hasUrlLoop}
                 />
-              </Link>
+              </DelayLink>
             )}
           </div>
         );
