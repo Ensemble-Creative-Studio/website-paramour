@@ -1,5 +1,5 @@
 'use client'
-
+import { useLenis } from '@studio-freight/react-lenis'
 /**
  * This route is responsible for the built-in authoring environment using Sanity Studio.
  * All routes under your studio path is handled by this file using Next.js' catch-all routes:
@@ -13,5 +13,9 @@ import { NextStudio } from 'next-sanity/studio'
 import config from '../../../sanity.config'
 
 export default function StudioPage() {
+  const lenis = useLenis(({ scroll }) => {
+   console.log('jjj')
+  })
+lenis.destroy()
   return <NextStudio config={config} />
 }

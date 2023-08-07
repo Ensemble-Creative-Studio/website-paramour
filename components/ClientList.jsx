@@ -1,27 +1,21 @@
-import Image from "next/image";
 import Link from "next/link";
+import RandomClientGrid from "./grid/RandomClientGrid";
 
 export default function ClientList({ clientData, fontSize }) {
-   console.log(fontSize)
   return (
-    <div className="px-6 pb-24" >
-       
+    <div className="px-6 pb-24">
       {clientData[0].clients.map((client, index) => (
-        <div key={index} className="">
-          <Link  href={`/works/${client.slug.current}`}>
-            
-          <h2 className={` everest uppercase text-center pb-1 ${fontSize}`} >
-          {client.client}
-            </h2>
-              <Image 
-              className="hidden"
-                src={client.firstImage.url}
-                alt={client.client}
-                width={400} // adjust this value as needed
-                height={400} // adjust this value as needed
-              />
-            
-          </Link>
+        <div key={index} className="flex flex-col">
+          <div className="flex justify-center">
+            <Link className="hover" href={`/works/${client.slug.current}`}>
+              <h2 className={`everest uppercase text-center pb-1 ${fontSize}`}>
+                {index === clientData[0].clients.length - 1
+               ? `${client.client}.`
+               : `${client.client},`}
+              </h2>
+            </Link>
+            <RandomClientGrid image={client.firstImage.url} />
+          </div>
         </div>
       ))}
     </div>

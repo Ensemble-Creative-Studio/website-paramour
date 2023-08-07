@@ -30,13 +30,7 @@ export default function FeaturedGridHome({ heroData }) {
               >
                             <FadingImage src={project.firstImage.url} alt="Your Image" width={1000} height={1000} />
 
-                {/* <Image
-                  src={project.firstImage.url}
-                  alt={project.client}
-                  className="w-full object-cover h-full"
-                  width={1000}
-                  height={1000}
-                /> */}
+      
               </div>
             </Link>
           </div>
