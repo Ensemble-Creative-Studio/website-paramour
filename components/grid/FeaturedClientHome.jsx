@@ -8,7 +8,7 @@ export default function FeaturedGridHome({ heroData }) {
 
   return (
     <div>
-      <div className="romie font-light uppercase text-center text-h1-mobile py-28">
+      <div className="romie font-light uppercase text-center text-h1-mobile py-28 md:py-32">
         Featured <br /> Projects
       </div>
       {projects.map((project, index) => {
