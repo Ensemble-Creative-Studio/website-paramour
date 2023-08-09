@@ -29,13 +29,9 @@ export default function ViewAll({ projectData, isVisible, setIsVisible }) {
     
     }
   };
-  useEffect(() => {
-    console.log("isVisible:", isVisible);
-  }, [isVisible]);
 
-  useEffect(() => {
-    console.log("Component re-rendered with isVisible:", isVisible);
-  }); // This effect will run on every render
+
+
   const getTotalElements = () => {
     return projectData[0].videosGallery?.length + projectData[0].imagesGallery.length;
   };

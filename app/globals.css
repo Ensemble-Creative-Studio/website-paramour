@@ -180,7 +180,7 @@ header a.active {
 
 /* Apply the animation to the element you want to fade out */
 .animation-fadeout {
-  animation: fadeOut 0.6s forwards 1s ease-out;
+  animation: fadeOut 0.6s forwards 0.6s ease-out;
 }
 
 html.lenis {

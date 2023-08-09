@@ -11,24 +11,39 @@ export default function WorksGridDesktop({ filteredProject }) {
     <>
       {filteredProject.map((project, index) => (
         <div className="gridProjects h-screen" key={index}>
-          <ProjectRow project={project} />
+          <ProjectRow project={project} showOnlyFirstImage={project.showOnlyFirstImage} />
         </div>
       ))}
     </>
   );
 }
 
-const ProjectRow = ({ project }) => {
+const ProjectRow = ({ project, showOnlyFirstImage }) => {
+
   const tags = project.tags.map((tag) => tag.title).join(", ");
 
-  const [firstStart, setFirstStart] = useState(() => randomStartColumn(0));
-  const [firstSpan, setFirstSpan] = useState(() => randomSpan(isWideOrVideo(project)));
+  const [firstSpan, setFirstSpan] = useState(() => randomSpan(isWideOrVideo(project), showOnlyFirstImage));
+  const [firstStart, setFirstStart] = useState(() => randomStartColumn(0, firstSpan, showOnlyFirstImage));
+  
+  
   const [firstPosition, setFirstPosition] = useState(() => decideItemPosition(0));
 
   const [secondStart, setSecondStart] = useState(() => randomStartColumn(1));
   const [secondSpan, setSecondSpan] = useState(() => getSecondSpan(firstStart, firstSpan, isWideOrVideo(project)));
   const [secondPosition, setSecondPosition] = useState(() => decideItemPosition(1, firstPosition));
 
+  if (showOnlyFirstImage) {
+    return (
+      <Project 
+        project={project} 
+        index={0}
+        startColumn={firstStart}
+        span={firstSpan}
+        position={firstPosition}
+        tags={tags}
+      />
+    );
+  }
   return (
     <>
       <Project 
@@ -50,7 +65,6 @@ const ProjectRow = ({ project }) => {
     </>
   );
 }
-
 
 function decideItemPosition(index, prevPosition) {
   let positions = ['start', 'center', 'end'];
@@ -93,7 +107,6 @@ const Project = ({ project, index, tags, startColumn, span, position }) => {
     ...paddingStyle
   };
 
-  console.log(tags)
   return (
     <div className="flex" style={style}>
       <DelayLink
@@ -143,18 +156,34 @@ const randomValue = (max) => {
   return Math.floor(Math.random() * max) + 1;
 }
 
-const randomSpan = (isWideOrVideoBool) => {
+const randomSpan = (isWideOrVideoBool, showOnlyFirstImage = false) => {
+  if (showOnlyFirstImage) {
+    return [4, 5][Math.floor(Math.random() * 2)];  // Either span 4 or 5
+  }
   const spans = isWideOrVideoBool ? [4, 5] : [3, 4];
   return spans[Math.floor(Math.random() * spans.length)];
 }
 
-const randomStartColumn = (index, firstSpan = 0) => {
-  if(index === 0) {
+
+const randomStartColumn = (index, firstSpan = 0, showOnlyFirstImage = false) => {
+  if (showOnlyFirstImage) {
+    // If span is 4 and should end at column 12, it should start at column 8
+    // If span is 5 and should end at column 12, it should start at column 7
+    const endStarts = firstSpan === 4 ? [8] : [7, 8];
+    // Either start at 1 or 2, or use the computed starting column for ending at 11 or 12
+    return [1, 2, ...endStarts][Math.floor(Math.random() * 3)];
+  }
+  if (index === 0) {
     return randomValue(2);
   } else {
     return 7 + randomValue(2);
   }
 }
+
+
+
+
+
 
 const getSecondSpan = (firstStart, firstSpan, isWideOrVideoBool) => {
   let secondSpan = randomSpan(isWideOrVideoBool);

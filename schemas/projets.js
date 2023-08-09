@@ -10,7 +10,7 @@ export default {
       name: 'client',
       type: 'string',
       title: 'Client',
-      required: true, // Add required property
+      required: true,
     },
     {
       name: 'tags',
@@ -22,7 +22,7 @@ export default {
           to: [{ type: 'tag' }],
         },
       ],
-      required: true, // Add required property
+      required: true,
     },
     {
       title: 'Slug',
@@ -33,14 +33,14 @@ export default {
         source: 'client',
         maxLength: 96,
       },
-      required: true, // Add required property
+      required: true,
     },
     orderRankField({ type: 'projets', name: 'name' }),
     {
       name: 'informations',
       type: 'text',
       title: 'Infos',
-      required: true, // Add required property
+      required: true,
     },
     {
       name: 'imagesGallery',
@@ -48,7 +48,13 @@ export default {
       type: 'array',
       description: 'Image size should be < 5Mo, the first or the 2 first image will be used as project thumbnail',
       of: [{ type: 'image' }],
-      required: true, // Add required property
+      required: true,
+    },
+    {
+      name: 'showOnlyFirstImage',
+      type: 'boolean',
+      title: 'Show only first image',
+      description: 'Check this box to display only the first image in a bigger format on the work page.'
     },
     {
       "name": "videosGallery",
@@ -73,7 +79,7 @@ export default {
           ]
         }
       ]
-    }
-    
+    },
+
   ],
 };
