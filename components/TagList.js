@@ -7,9 +7,12 @@ export default function TagList() {
   const { currentTag, setCurrentTag } = useContext(CurrentTagContext);
   const { tagData } = useContext(TagContext);
 
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [windowWidth, setWindowWidth] = useState(0); // Initialize with 0
 
   useEffect(() => {
+    // Update the window width state after the component is mounted
+    setWindowWidth(window.innerWidth);
+
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
     };
