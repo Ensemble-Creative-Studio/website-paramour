@@ -46,7 +46,7 @@ export default {
       name: 'imagesGallery',
       title: 'Images gallery',
       type: 'array',
-      description: 'Image size should be < 5Mo',
+      description: 'Image size should be < 5Mo, the first or the 2 first image will be used as project thumbnail',
       of: [{ type: 'image' }],
       required: true, // Add required property
     },

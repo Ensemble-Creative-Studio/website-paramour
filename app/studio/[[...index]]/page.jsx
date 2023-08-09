@@ -6,14 +6,12 @@ import { NextStudio } from 'next-sanity/studio';
 import config from '../../../sanity.config';
 
 export default function StudioPage() {
-  const lenis = useLenis(({ scroll }) => {});
+  const lenis = useLenis(({ scroll }) => {
+    lenis.destroy();
+  });
 
   // Call lenis.destroy() when the component unmounts
-  useEffect(() => {
-    return () => {
-      lenis.destroy();
-    };
-  }, []); // Empty dependency array
+
 
   return <NextStudio config={config} />;
 }

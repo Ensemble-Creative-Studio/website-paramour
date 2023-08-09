@@ -6,17 +6,15 @@ const StickyMiddleComponent = ({ client, tags }) => {
   const [ref, style] = useStickyMiddle();
   const componentRef = useRef(null);
   const [isMiddle, setIsMiddle] = useState(false);
-
   useEffect(() => {
     const handleScroll = () => {
       if (componentRef.current) {
         const { top, height } = componentRef.current.getBoundingClientRect();
         const windowHeight = window.innerHeight;
-
         // Calculate the distance from the top of the element to the middle of the viewport
         const distanceToMiddle = Math.abs(top - windowHeight / 2);
-        const isElementInMiddle = distanceToMiddle < height / 2;
-
+        const isElementInMiddle = distanceToMiddle > (-height / 2 - 10) && distanceToMiddle < (height / 2 + 10);
+     
         setIsMiddle(isElementInMiddle);
       }
     };
@@ -25,7 +23,8 @@ const StickyMiddleComponent = ({ client, tags }) => {
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, []);
+  }, [componentRef]);
+
 
   return (
     <div className="z-40 sticky pointer-events-none" ref={ref} style={style}>

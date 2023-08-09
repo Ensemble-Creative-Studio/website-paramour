@@ -1,5 +1,4 @@
 import React from "react";
-import Link from "next/link";
 import DelayLink from "../utils/DelayLink";
 import StickyMiddleComponent from "./StickyMiddleComponent";
 import FadingImage from "../utils/FadeInImage";

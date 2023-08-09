@@ -8,7 +8,7 @@ export default function ClientList({ clientData, fontSize }) {
         <div key={index} className="flex flex-col">
           <div className="flex justify-center">
             <Link className="hover" href={`/works/${client.slug.current}`}>
-              <h2 className={`everest uppercase text-center pb-1 ${fontSize}`}>
+              <h2 className={`everest uppercase portable-h1 text-center pb-1 ${fontSize}`}>
                 {index === clientData[0].clients.length - 1
                ? `${client.client}.`
                : `${client.client},`}

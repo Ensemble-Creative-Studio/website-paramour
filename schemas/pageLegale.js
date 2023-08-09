@@ -24,6 +24,7 @@ export default {
       {
         name: "editionText",
         type: "blockContent",
+        description:'use H3 and normal to style text here',
         title: "Texte",
         rows: 5,
       },

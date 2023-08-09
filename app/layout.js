@@ -25,10 +25,12 @@ export default function RootLayout({ children, params }) {
 
 
     <html lang="en">
+      
       <AnimatePresence
         initial={true}
   
       >
+       
           <body key={params.slug} className={inter.className}>{children}</body>
       </AnimatePresence>
     </html>

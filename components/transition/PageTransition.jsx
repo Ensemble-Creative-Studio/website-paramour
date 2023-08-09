@@ -11,8 +11,8 @@ const Layout = ({ children }) => {
 
     useEffect(() => {
       if (lenis && lenis.scrollTo) {
-        lenis.scrollTo(0, { immediate: true }); 
-      }
+        console.log(lenis.scrollTo(0))
+        lenis.scrollTo(0, { duration: 0.01  });       }
   }, []);
   
     

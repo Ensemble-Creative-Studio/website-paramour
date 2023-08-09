@@ -19,15 +19,14 @@ export default async function Legal() {
 
   return (
     <Layout>
-    <div className="bg-white">
-      <Link href="./">Go back</Link>
+    <div className="almostWhite LegalPage px-6 md:px-10 py-12 md:py-16 ">
+      <Link className="itemFooter grey uppercase cursor-pointer leading-none" href="./">Close</Link>
 
       <main>
-        <h2>{pageLegalData.titre}</h2>
+        <h2 className="md:pt-24 pt-24 pb-12  projectTitle">{pageLegalData.titre}</h2>
 
         <ContactSentence footerData={pageLegalData.editionText} />
       </main>
-      <Footer footerData={footerData} pageLegalData={allPageLegalData} />
     </div>
     </Layout>
 

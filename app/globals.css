@@ -34,6 +34,10 @@ html {
 }
 body {
   color: #474747;
+  background: var(--gris, #F0F0F0);
+}
+.almostWhite{
+  background: var(--gris, #F0F0F0);
 }
 strong,
 .everest,
@@ -83,6 +87,15 @@ h4 {
   font-size: 3.9rem;
   line-height: 89%; /* 34.71px */
 }
+.bigName{
+  color: var(--text-grey, #474747);
+text-align: center;
+/* D/H1/Sans */
+font-family: "TWKEverett-Medium";
+font-size: 3.9rem;
+line-height: 89%; /* 34.71px */
+text-transform: uppercase;
+}
 .projectTag {
   font-size: 1.7rem;
   font-style: normal;
@@ -118,6 +131,7 @@ header a.active {
 }
 .itemFooter {
   color: var(--black, #000);
+  font-family: "TWKEverett-Medium";
 
   /* D/Menu/Sans */
 
@@ -184,6 +198,32 @@ html.lenis {
 .lenis.lenis-scrolling iframe {
   pointer-events: none;
 }
+.playerButton{
+  color: var(--gris, #F0F0F0);
+
+  font-family: "TWKEverett-Medium";
+font-size: 1.2rem;
+font-style: normal;
+font-weight: 500;
+line-height: 91%; /* 10.92px */
+text-transform: uppercase;
+}
+.bgAlmostWhiteLight{
+  background-color: rgba(240, 240, 240, 0.2);
+}
+.bgAlmostWhite{
+  background-color: rgba(240, 240, 240, 0.5);
+}
+
+.LegalPage p{
+font-family: 'Romie' ;
+text-transform: none;
+max-width: 120ch;
+}
+
+.LegalPage h3{
+  padding: 3rem 0 2rem;
+}
 
 @media (min-width: 769px) {
   /* Your styles for screens bigger than 768px go here */
@@ -212,10 +252,10 @@ html.lenis {
   .credits-sans {
     font-size: 4.5rem;
   }
-  .portable-h3{
+  .portable-h3 {
     max-width: 34ch;
   }
-  .gridClient{
+  .gridClient {
     position: fixed;
     display: grid;
     grid-template-columns: repeat(12, 1fr);
@@ -223,29 +263,90 @@ html.lenis {
     column-gap: 2rem;
     height: 100vh;
     width: 100vw;
-  padding: 0 2rem;
-  top: 0;
-  left: 0;
-  transition: 0.6s ease all;
-
+    padding: 0 2rem;
+    top: 0;
+    left: 0;
+    transition: 0.6s ease all;
   }
-  .hover:hover + .gridClient{
+  .hover:hover + .gridClient {
     opacity: 1;
     transition: 0.6s ease all;
   }
-  .heightSlider{
+  .heightSlider {
     height: 89vh;
-    
   }
   .keen-slider__slide {
     transition: opacity 0.3s ease-in-out;
-    opacity: 1;  /* Setting default opacity to 1 */
+    opacity: 1; /* Setting default opacity to 1 */
+  }
+
+  .keen-slider__slide.leaving-slide {
+    opacity: 0; /* Slide that's leaving will have 0 opacity */
+  }
+  .transition-opacity {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 350ms ease, visibility 0s ease 350ms;
+  }
+  .transition-opacity-active{
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 350ms ease, visibility 0s ease 0s;
+  }
+.projectHover:hover .projectTitleHover{
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 350ms ease, visibility 0s ease 0s;
+}
+.projectTitleHover{
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 350ms ease, visibility 0s ease 350ms;
+}
+.gridProjects {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: 2.5rem;
+
+}
+.bigName{
+  color: var(--text-grey, #474747);
+text-align: center;
+/* D/H1/Sans */
+font-family: "TWKEverett-Medium";
+font-size: 10.5rem;
+font-style: normal;
+font-weight: 500;
+line-height: 93%; /* 96.72px */
+text-transform: uppercase;
+}
+.minHeight900px{
+  min-height: 900px;
+}
+.selected{
+  
+/* D/Filters/Serif */
+
+font-size: 12rem;
+line-height: 87%; /* 104.4px */
+text-transform: uppercase;
+}
+.notselected{
+  font-size: 13rem;
+  font-weight: 300;
+  line-height: 80%; /* 104.24px */
+  letter-spacing: -3.909px;
+  text-transform: uppercase;
+  }
 }
 
-.keen-slider__slide.leaving-slide {
-    opacity: 0;  /* Slide that's leaving will have 0 opacity */
+.transition-opacity {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 350ms ease, visibility 0s ease 350ms;
 }
-
-
-
+.transition-opacity-active{
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 350ms ease, visibility 0s ease 0s;
 }

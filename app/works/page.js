@@ -6,7 +6,12 @@ import ProjectList from "@/components/ProjectList";
 import { TagProvider } from "@/components/utils/useTags";
 import { ProjectProvider } from "@/components/utils/useProjects";
 import { CurrentTagProvider } from "@/components/utils/CurrentTagContext";
-import { getTag, getProjects, getFooter, getPageLegal } from "../../sanity/sanity-util";
+import {
+  getTag,
+  getProjects,
+  getFooter,
+  getPageLegal,
+} from "../../sanity/sanity-util";
 import Footer from "@/components/Footer";
 import Layout from "@/components/transition/PageTransition";
 export default async function Work() {
@@ -14,27 +19,24 @@ export default async function Work() {
   const projectsData = await getProjects();
   const footerData = await getFooter();
 
-
-const pageLegalData = await getPageLegal();
+  const pageLegalData = await getPageLegal();
 
   return (
     <Layout>
-    <CurrentTagProvider>
-      <ProjectProvider initialData={projectsData}>
-        <TagProvider initialData={tagData}>
-          <div>
-            <Header />
-            <main className="bg-white">
-              <TagList />
-              <ProjectList />
-              <Footer footerData={footerData} pageLegalData={pageLegalData}/>
-
-            </main>
-
-          </div>
-        </TagProvider>
-      </ProjectProvider>
-    </CurrentTagProvider>
+      <CurrentTagProvider>
+        <ProjectProvider initialData={projectsData}>
+          <TagProvider initialData={tagData}>
+            <div>
+              <Header />
+              <main className="almostWhite md:px-10">
+                <TagList />
+                <ProjectList />
+                <Footer footerData={footerData} pageLegalData={pageLegalData} />
+              </main>
+            </div>
+          </TagProvider>
+        </ProjectProvider>
+      </CurrentTagProvider>
     </Layout>
   );
 }

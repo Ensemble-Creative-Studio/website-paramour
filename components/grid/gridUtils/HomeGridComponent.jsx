@@ -1,9 +1,8 @@
 'use client'
 import React, { useState, useEffect } from "react";
-import GalleryMobile from "@/components/gallery/GalleryMobile";
-import KeenSlider from "./KeenSlider";
-
-function GalleryComponent({ projectData }) {
+import FeaturedGridHome from "../FeaturedClientHome";
+import FeaturedGridHomeDesktop from "../FeaturedClientHomeDesktop";
+function HomeGridComponent({ heroData }) {
     const [screenWidth, setScreenWidth] = useState(null); // Initialize with null
   
     useEffect(() => {
@@ -26,10 +25,10 @@ function GalleryComponent({ projectData }) {
     if (screenWidth === null) return null;
   
     if (screenWidth < 768) {
-      return <GalleryMobile projectData={projectData} />;
+      return <FeaturedGridHome heroData={heroData} />;
     } else {
-      return <KeenSlider projectData={projectData} />;
+      return <FeaturedGridHomeDesktop heroData={heroData} />;
     }
   }
   
-  export default GalleryComponent;
+  export default HomeGridComponent;

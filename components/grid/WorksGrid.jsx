@@ -27,7 +27,7 @@ export default function WorksGrid({ filteredProject }) {
                 </div>
               </DelayLink>
             ) : (
-              <DelayLink scroll={false} href={`/works/${project.slug.current}`}>
+              <DelayLink  href={`/works/${project.slug.current}`}>
                 <RandomJustifyImagePair
                   firstImage={project.firstImage.url}
                   secondImage={project.secondImage.url}

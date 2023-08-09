@@ -38,7 +38,7 @@ function RandomJustifyImagePair({ firstImage, secondImage, alt, urlLoop }) {
       {urlLoop ? (
         // Render the video if urlLoop is provided
         <div className={`${justifyFirst} flex w-full h-auto`}>
-          <video autoPlay loop muted className="w-full h-full"  style={{ width: firstImageWidth }}>
+          <video autoPlay playsInline loop muted className="w-full h-full"  style={{ width: firstImageWidth }}>
             <source src={urlLoop} type="video/mp4" />
             {/* Add other video sources if needed */}
           </video>

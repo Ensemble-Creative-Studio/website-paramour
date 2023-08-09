@@ -4,6 +4,7 @@ import Hero from "@/components/Hero";
 import BigSentence from "@/components/BigSentence";
 import Header from "@/components/Header";
 import FeaturedGridHome from "@/components/grid/FeaturedClientHome";
+import HomeGridComponent from "@/components/grid/gridUtils/HomeGridComponent";
 import ClientList from "@/components/ClientList";
 import Footer from "@/components/Footer";
 import Layout from "@/components/transition/PageTransition";
@@ -25,13 +26,14 @@ export default async function Home() {
         <Header />
         <main>
           <Hero heroData={heroData} />
-          <div className=" padding-top-screen relative bg-white">
+          <div className=" padding-top-screen relative almostWhite md:px-10">
             <BigSentence heroData={heroData} />
-            <FeaturedGridHome heroData={heroData} />
+
+            <HomeGridComponent heroData={heroData} />
             <div className="romie font-light uppercase text-center text-h1-mobile pt-48 pb-1 ">
               Our Client
             </div>
-            <ClientList clientData={clientData} fontSize='projectTitle' />
+            <ClientList clientData={clientData} fontSize='bigName' />
             <Footer footerData={footerData} pageLegalData={pageLegalData} />
           </div>
         </main>

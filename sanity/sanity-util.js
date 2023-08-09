@@ -10,6 +10,7 @@ export async function getHero() {
   bigSentence,
   
   "projects": projects[]->{
+    ...,
 slug,
     client,
     tags[]->,

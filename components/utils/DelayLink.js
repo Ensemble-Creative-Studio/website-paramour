@@ -13,6 +13,7 @@ const DelayLink = ({ href, children, delay = 150, className }) => {
     setDivVisible(true);
 
     setTimeout(() => {
+
       router.push(href);
     }, delay);
   };
@@ -21,8 +22,8 @@ const DelayLink = ({ href, children, delay = 150, className }) => {
     <Link href={href} className={className} onClick={handleClick}>
       {children}
       <div
-        className={`fixed  top-0 left-0 z-30 w-screen h-screen bg-white transition-opacity ${
-          isDivVisible ? "opacity-1 pointer-events-auto" : "opacity-0 pointer-events-none"
+        className={`fixed  top-0 left-0 z-30 w-screen h-screen almostWhite transition-all ${
+          isDivVisible ? "opacity-1 " : "opacity-0 pointer-events-none"
         }`}
       />
     </Link>
