@@ -90,19 +90,7 @@ export default defineConfig({
 visionTool(),
     dashboardTool({
       widgets: [
-        netlifyWidget({
-            title: 'My Netlify deploys',
-            sites: [
-           
-              {
-                title: 'GMG - Concept',
-                apiId: '2fcbb5b0-31bd-4f74-9999-f3e61187163f',
-                buildHookId: '64b2903f1f52c105bc151e57',
-                name: 'ornate-horse-8b431c',
-                url:'https://ornate-horse-8b431c.netlify.app/'
-              }
-            ]
-        })
+ 
       ]
     })
   ],
