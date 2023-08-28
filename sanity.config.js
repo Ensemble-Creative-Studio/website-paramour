@@ -3,6 +3,7 @@ import { defineConfig } from "sanity"
 import { deskTool } from "sanity/desk"
 import { visionTool } from "@sanity/vision"
 import { dashboardTool } from "@sanity/dashboard";
+import { vercelDeployTool } from 'sanity-plugin-vercel-deploy'
 
 import { schemaTypes } from "./schemas"
 import {apiVersion, dataset, projectId} from './sanity/env'
@@ -92,7 +93,9 @@ visionTool(),
       widgets: [
  
       ]
-    })
+    }),
+    vercelDeployTool(),
+
   ],
 
   schema: {

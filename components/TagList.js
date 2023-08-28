@@ -2,11 +2,13 @@
 import { useContext, useState, useEffect } from "react"; // Don't forget to import useState and useEffect
 import { CurrentTagContext } from "./utils/CurrentTagContext";
 import { TagContext } from "./utils/useTags";
-
+import { useLenis } from "@studio-freight/react-lenis";
 export default function TagList() {
   const { currentTag, setCurrentTag } = useContext(CurrentTagContext);
   const { tagData } = useContext(TagContext);
-
+  const lenis = useLenis(({ scroll }) => {
+    // called every scroll, keep it empty if you don't want to do anything on every scroll
+});
   const [windowWidth, setWindowWidth] = useState(0); // Initialize with 0
 
   useEffect(() => {
@@ -23,6 +25,13 @@ export default function TagList() {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+  const handleTagClick = (tag) => {
+    
+    // Use lenis to scroll by 100vh if it's available
+    if (lenis && lenis.scrollTo) {
+        lenis.scrollTo(window.innerHeight, { duration: 1.2 });
+    }
+};
 
   const wrapSpansWithDivs = (elements) => {
     const wrappedElements = [];
@@ -40,7 +49,10 @@ export default function TagList() {
   const tagElements = [
     <span
       className={currentTag === null ? "cursor-pointer selected" : "cursor-pointer notselected"}
-      onClick={() => setCurrentTag(null)}
+      onClick={() => {
+        setCurrentTag(null); // Retain this for setting the current tag
+        handleTagClick(); // Invoke scroll when tag is clicked
+      }}
       key="ALL"
     >
       {" "}
@@ -50,7 +62,10 @@ export default function TagList() {
       <span
         className={`cursor-pointer uppercase ${tag === currentTag ? "selected" : "notselected"}`}
         key={tag._id}
-        onClick={() => setCurrentTag(tag)}
+        onClick={() => {
+          setCurrentTag(tag); // Retain this for setting the current tag
+          handleTagClick(); // Invoke scroll when tag is clicked
+        }}
       >
         {tag.title}
         {index === tagData.length - 1 ? "." : ","}

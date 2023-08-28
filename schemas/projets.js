@@ -75,6 +75,13 @@ export default {
               "name": "urlVideo",
               "type": "url",
               "title": "URL for Full Video"
+            },
+            {
+              "name": "videoShowPosition",
+              "type": "number",
+              "title": "Show Video After Image Number",
+              "description": "Select after which image the video should be shown. Ensure it's less than or equal to the total number of images in the gallery.",
+              "validation": Rule => Rule.required().integer().positive().warning('Ensure this is less than or equal to the total number of images in the gallery.')
             }
           ]
         }

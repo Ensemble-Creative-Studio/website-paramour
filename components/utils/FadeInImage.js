@@ -23,7 +23,7 @@ const FadingImage = ({ src, alt, width, height, style, className }) => {
                
             }}
         >
-            <Image src={src} quality={65} style={style} alt={alt} width={600} height={600} />
+            <Image src={src} quality={65} style={style} alt={alt} width={width} height={width} />
         </motion.div>
     );
 };

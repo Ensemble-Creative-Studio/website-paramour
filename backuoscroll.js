@@ -1,4 +1,3 @@
-
 "use client";
 import "keen-slider/keen-slider.min.css";
 import React from "react";
@@ -10,62 +9,90 @@ import { urlForImage } from "@/sanity/lib/image";
 import Image from "next/image";
 import CustomVideoPlayer from "../utils/CustomVideoPlayer";
 export default function KeenSlider({ projectData }) {
-  const WheelControls = (slider) => {
-    let touchTimeout
-    let position
-    let wheelActive
+  function WheelControls(slider) {
+    let touchTimeout;
+    let startPosition;
+    let wheelActive = false;
   
     function dispatch(e, name) {
-      position.x -= e.deltaX
-      position.y -= e.deltaY
+      startPosition = {
+        x: e.pageX,
+        y: e.pageY,
+      };
       slider.container.dispatchEvent(
         new CustomEvent(name, {
           detail: {
-            x: position.x,
-            y: position.y,
+            x: startPosition.x,
+            y: startPosition.y,
           },
         })
-      )
+      );
     }
   
     function wheelStart(e) {
-      position = {
+      startPosition = {
         x: e.pageX,
         y: e.pageY,
-      }
-      dispatch(e, "ksDragStart")
+      };
+      dispatch(e, "ksDragStart");
     }
   
     function wheel(e) {
-      dispatch(e, "ksDrag")
+      dispatch(e, "ksDrag");
     }
   
     function wheelEnd(e) {
-      dispatch(e, "ksDragEnd")
+      dispatch(e, "ksDragEnd");
     }
-  
-    function eventWheel(e) {
-     
-      e.preventDefault()
-      if (!wheelActive) {
-        wheelStart(e)
-        wheelActive = true
+    function debounce(func, wait) {
+      let timeout;
+      return function executedFunction(...args) {
+        const later = () => {
+          clearTimeout(timeout);
+          func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+      };
+    }
+    
+    let debouncedScroll = debounce((e) => {
+      const deltaY = e.deltaY;
+    
+      if (deltaY > 0) {
+        instanceRef.current?.next();
+      } else if (deltaY < 0) {
+        instanceRef.current?.prev();
       }
-      wheel(e)
-      clearTimeout(touchTimeout)
-      touchTimeout = setTimeout(() => {
-        wheelActive = false
-        wheelEnd(e)
-      }, 50)
+    }, 200);  // Adjust the time here. Start with 200ms, and increase if needed.
+    
+    function eventWheel(e) {
+      e.preventDefault();
+    
+      if (!wheelActive) {
+        wheelActive = true; // Set wheelActive to true immediately to prevent further scroll actions
+    
+        wheelStart(e);
+    
+        debouncedScroll(e);  // Call the debounced function instead of direct scrolling.
+    
+        wheelEnd(e);
+    
+        setTimeout(() => {
+          wheelActive = false; // Allow next scroll action after the delay
+        }, 5000); // Wait 500ms before allowing another scroll
+      }
     }
+    
+
   
     slider.on("created", () => {
       slider.container.addEventListener("wheel", eventWheel, {
-      
         passive: false,
-      })
-    })
+      });
+    });
   }
+  
   useEffect(() => {
     const handleKeyDown = (event) => {
       if (event.key === "ArrowRight") {
@@ -94,7 +121,6 @@ export default function KeenSlider({ projectData }) {
   const [sliderRef, instanceRef] = useKeenSlider({
     loop: true,
     drag: false,
-    
     defaultAnimation: {
       duration: 1000,
       easing: cubicEaseInOut,
@@ -149,72 +175,49 @@ export default function KeenSlider({ projectData }) {
     }
   }, [currentSlide, instanceRef]);
   // Assuming the provided asset reference can be transformed into a URL like this
-// Initialize with images
-const mergedItems = projectData[0].imagesGallery.map(image => ({ type: 'image', data: image }));
-
-// Insert videos at their specific positions
-projectData[0].videosGallery?.forEach(video => {
-    const videoItem = { type: 'video', data: video };
-    mergedItems.splice(video.videoShowPosition - 1, 0, videoItem);
-});
-
-
-  // Sort the merged list based on videoShowPosition for videos and natural order for images
-  mergedItems.sort((a, b) => {
-    if (a.type === 'video' && b.type === 'image') {
-      return a.position - b.data._key; // Assuming image keys are sequential and can be used for sorting
-    } else if (a.type === 'image' && b.type === 'video') {
-      return a.data._key - b.position;
-    } else if (a.type === 'video' && b.type === 'video') {
-      return a.position - b.position;
-    } else {
-      return a.data._key - b.data._key; // Assuming image keys are sequential and can be used for sorting
-    }
-  });
 
   return (
     <div ref={sliderRef} className="keen-slider overflow-hidden h-screen">
-      {mergedItems.map((item, index) => {
-        if (item.type === 'image') {
-          return (
+      {projectData[0].videosGallery?.map((video, index) => (
+        <div
+          key={video._key}
+          className={`relative keen-slider__slide number-slide${index}`}
+        >
+          <div className="flex relative items-end h-screen w-full justify-center">
             <div
-              key={item.data._key}
-              className={`flex items-end justify-center relative keen-slider__slide number-slide${index}`}
-            >
-              <div
-                onClick={(e) => e.stopPropagation() || instanceRef.current?.next()}
-                className=" -z-10  absolute cursor-pointer w-full h-full"
-              ></div>
-              <div className="heightSlider flex ">
-                <Image
-                  src={urlForImage(item.data.asset._ref)}
-                  alt={`Slide ${index}`}
-                  className="w-auto object-cover h-full "
-                  width={1200}
-                  height={1000}
-                  priority
-                />
-              </div>
-            </div>
-          );
-        } else {  // item.type === 'video'
-          return (
-            <div
-              key={item.data._key}
-              className={`relative keen-slider__slide number-slide${index}`}
-            >
-              <div
-                onClick={(e) => e.stopPropagation() || instanceRef.current?.next()}
-                className="absolute cursor-pointer w-full h-full"
-              ></div>
-              <div className="flex relative items-end h-screen w-full justify-center">
-                <CustomVideoPlayer src={item.data.urlVideo} />
-              </div>
-            </div>
-          );
-        }
-      })}
-    </div>
-);
+              onClick={(e) =>
+                e.stopPropagation() || instanceRef.current?.next()
+              }
+              className=" absolute cursor-pointer w-full h-full"
+            ></div>
+                <CustomVideoPlayer src={video.urlVideo} />
 
+          </div>
+        </div>
+      ))}
+      {projectData[0].imagesGallery.map((image, index) => (
+        <div
+          key={image._key}
+          className={` flex items-end justify-center relative keen-slider__slide number-slide${
+            projectData[0].videosGallery?.length + index
+          }`}
+        >
+          <div
+            onClick={(e) => e.stopPropagation() || instanceRef.current?.next()}
+            className=" -z-10  absolute cursor-pointer w-full h-full"
+          ></div>
+          <div className="heightSlider  flex ">
+            <Image
+              src={urlForImage(image.asset._ref)}
+              alt={`Slide ${index}`}
+              className="w-auto object-cover h-full "
+              width={1200}
+              height={1000}
+              priority
+            />{" "}
+          </div>
+        </div>
+      ))}
+    </div>
+  );
 }

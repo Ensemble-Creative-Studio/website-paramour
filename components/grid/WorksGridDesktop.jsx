@@ -130,7 +130,7 @@ const ProjectMedia = ({ project, index }) => {
             <source src={project.videosGallery[0].urlLoop} type="video/mp4" />
           </video>
         ) : (
-          <FadingImage src={project.firstImage.url} alt="Your Image" width={1000} height={1000} />
+          <FadingImage  src={project.firstImage.url} alt="Your Image" width={1000} height={1000} />
         )}
       </div>
     );
@@ -138,7 +138,7 @@ const ProjectMedia = ({ project, index }) => {
     return hasVideos(project) ? (
       <FadingImage src={project.firstImage.url} alt="Your Image" width={1000} height={1000} />
     ) : (
-      <FadingImage src={project.secondImage.url} alt="Your Image" width={1000} height={1000} />
+      <FadingImage src={project.secondImage?.url} alt="Your Image" width={1000} height={1000} />
     );
   }
 };
