@@ -22,7 +22,7 @@ export default {
           to: [{ type: 'tag' }],
         },
       ],
-      required: true,
+      validation: Rule => Rule.required()
     },
     {
       title: 'Slug',
@@ -33,14 +33,14 @@ export default {
         source: 'client',
         maxLength: 96,
       },
-      required: true,
+      validation: Rule => Rule.required()
     },
     orderRankField({ type: 'projets', name: 'name' }),
     {
       name: 'informations',
       type: 'text',
       title: 'Infos',
-      required: true,
+
     },
     {
       name: 'imagesGallery',
@@ -48,7 +48,7 @@ export default {
       type: 'array',
       description: 'Image size should be < 5Mo, the first or the 2 first image will be used as project thumbnail',
       of: [{ type: 'image' }],
-      required: true,
+      validation: Rule => Rule.required()
     },
     {
       name: 'showOnlyFirstImage',
