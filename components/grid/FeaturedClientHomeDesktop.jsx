@@ -140,7 +140,7 @@ const isWideOrVideo = (project) => {
 
 const hasVideos = project => project.videosGallery && project.videosGallery.length > 0;
 
-const isWideImage = project => project.firstImage.metadata.dimensions.aspectRatio >= 1;
+const isWideImage = project => project.firstImage?.metadata.dimensions.aspectRatio >= 1;
 
 
 
