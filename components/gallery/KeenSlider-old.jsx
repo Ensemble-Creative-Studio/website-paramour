@@ -37,10 +37,8 @@ export default function KeenSlider({ projectData }) {
     }
   
     function wheel(e) {
-      console.log("Wheel event triggered!", position); // Add this
-      dispatch(e, "ksDrag");
-   }
-   
+      dispatch(e, "ksDrag")
+    }
   
     function wheelEnd(e) {
       dispatch(e, "ksDragEnd")
@@ -62,10 +60,11 @@ export default function KeenSlider({ projectData }) {
     }
   
     slider.on("created", () => {
-      console.log("Event listener added!"); // Add this
-      slider.container.addEventListener("wheel", eventWheel, { passive: false });
-   });
-   
+      slider.container.addEventListener("wheel", eventWheel, {
+      
+        passive: false,
+      })
+    })
   }
   useEffect(() => {
     const handleKeyDown = (event) => {
@@ -94,7 +93,7 @@ export default function KeenSlider({ projectData }) {
   const [loaded, setLoaded] = useState(false);
   const [sliderRef, instanceRef] = useKeenSlider({
     loop: true,
-    // drag: false,
+    drag: false,
     
     defaultAnimation: {
       duration: 1000,
@@ -174,7 +173,7 @@ projectData[0].videosGallery?.forEach(video => {
   });
 
   return (
-    <div   ref={sliderRef}  className="keen-slider  h-screen">
+    <div data-lenis-prevent  ref={sliderRef}  className="keen-slider overflow-hidden h-screen">
       {mergedItems.map((item, index) => {
         if (item.type === 'image') {
           return (

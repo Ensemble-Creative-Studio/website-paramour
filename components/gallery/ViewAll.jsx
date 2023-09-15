@@ -30,14 +30,17 @@ export default function ViewAll({ projectData, isVisible, setIsVisible }) {
     }
   };
   const handleItemClick = (index, type) => {
+    const videoCountBeforeThisItem = mergedItems.slice(0, index).filter(item => item.type === 'video').length;
+    
     if (type === 'video') {
-      setCurrentSlide(index);
+      setCurrentSlide(index - videoCountBeforeThisItem);
     } else {
-      const videoCountBeforeThisImage = mergedItems.slice(0, index).filter(item => item.type === 'video').length;
-      setCurrentSlide(index + videoCountBeforeThisImage);
+      setCurrentSlide(index);
     }
+    
     setIsVisible(false);
-  };
+};
+
   
 
 

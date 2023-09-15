@@ -23,6 +23,24 @@ export default {
               'exif',       // Default: not included
               'location',   // Default: not included
             ],
+            validation: Rule => Rule.required()
+          }
+   
+        },
+        {
+          name: 'imageMobile',
+          type: 'image',
+          title: 'Image',
+          description: 'Upload an image for mobile',
+          options: {
+            metadata: [
+              'blurhash',   // Default: included
+              'lqip',       // Default: included
+              'palette',    // Default: included
+              'exif',       // Default: not included
+              'location',   // Default: not included
+            ],
+            validation: Rule => Rule.required()
           }
    
         },

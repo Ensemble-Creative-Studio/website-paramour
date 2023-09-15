@@ -18,7 +18,14 @@ export default {
             type: 'image',
             title: 'Image',
             description: 'Upload an image',
-     
+            validation: Rule => Rule.required()
+          },
+          {
+            name: 'imageMobile',
+            type: 'image',
+            title: 'Image',
+            description: 'Upload an image for mobile',
+            validation: Rule => Rule.required()
           },
           {
             name: 'url',

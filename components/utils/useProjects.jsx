@@ -8,12 +8,14 @@ export const ProjectProvider = ({ children, initialData }) => {
   const { currentTag } = useContext(CurrentTagContext);
   const [projectsData, setProjectsData] = useState(initialData);
   const [filteredProjects, setFilteredProjects] = useState(projectsData);
-
+console.log(projectsData[0].tagsSUB)
   useEffect(() => {
     if (currentTag) {
       setFilteredProjects(
+        
         projectsData.filter((project) =>
-          project.tags.some((tag) => tag._id === currentTag._id)
+       
+          project.tagsSUB?.some((tag) => tag._id === currentTag._id)
         )
       );
     } else {

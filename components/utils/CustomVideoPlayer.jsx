@@ -72,10 +72,10 @@ const CustomVideoPlayer = ({ src }) => {
   };
 
   return (
-    <div className='relative'>
+    <div className='relative h-full'>
       <video
         ref={videoRef}
-        className="w-auto h-2/3 z-20"
+        className="w-auto h-full z-20 object-bottom"
         onTimeUpdate={handleTimeUpdate}
         onEnded={handleVideoEnd}
         onLoadedMetadata={handleLoadedMetadata}

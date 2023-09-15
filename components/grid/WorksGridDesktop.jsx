@@ -4,12 +4,23 @@ import React, { useState } from 'react';
 import DelayLink from '../utils/DelayLink';
 import FadingImage from '../utils/FadeInImage';
 import FixedMiddleComponent from './FixedMiddleComponent';
-
+import { CurrentTagContext } from '../utils/CurrentTagContext';
+import { useContext } from 'react';
 
 export default function WorksGridDesktop({ filteredProject }) {
+  const { currentTag } = useContext(CurrentTagContext);
+
+  // Check if ALL is selected
+  const isAllSelected = currentTag === null;
+
+  // Filter projects based on the currentTag
+  const projectsToDisplay = isAllSelected
+    ? filteredProject.filter(project => !project.tagsSUB || project.tagsSUB.length === 0)
+    : filteredProject;
+
   return (
     <>
-      {filteredProject.map((project, index) => (
+      {projectsToDisplay.map((project, index) => (
         <div className="gridProjects h-screen" key={index}>
           <ProjectRow project={project} showOnlyFirstImage={project.showOnlyFirstImage} />
         </div>
@@ -18,10 +29,19 @@ export default function WorksGridDesktop({ filteredProject }) {
   );
 }
 
+
 const ProjectRow = ({ project, showOnlyFirstImage }) => {
 
-  const tags = project.tags.map((tag) => tag.title).join(", ");
+  let tags;
 
+  if (project.tags && project.tags.length > 0) {
+    tags = project.tags.map((tag) => tag.title).join(", ");
+  } else if (project.tagsSUB && project.tagsSUB.length > 0) {
+    tags = project.tagsSUB.map((tag) => tag.title).join(", ");
+  } else {
+    tags = "No tags available";
+  }
+  
   const [firstSpan, setFirstSpan] = useState(() => randomSpan(isWideOrVideo(project), showOnlyFirstImage));
   const [firstStart, setFirstStart] = useState(() => randomStartColumn(0, firstSpan, showOnlyFirstImage));
   

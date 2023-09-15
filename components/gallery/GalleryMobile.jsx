@@ -3,6 +3,7 @@ import { urlForImage } from "@/sanity/lib/image";
 import FadingImage from "../utils/FadeInImage";
 import CustomVideoPlayer from "../utils/CustomVideoPlayer";
 export default function GalleryMobile({ projectData }) {
+  console.log(projectData[0].videosGallery)
     return (
         <div className="flex -z-10 gap-40 flex-col pt-40">
            {projectData[0].videosGallery?.map((video, index) => (
@@ -17,7 +18,7 @@ export default function GalleryMobile({ projectData }) {
               }
               className=" absolute cursor-pointer w-full h-full"
             ></div>
-                <CustomVideoPlayer src={video.urlVideo} />
+                <CustomVideoPlayer src={video?.urlVideo} />
 
           </div>
         </div>

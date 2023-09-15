@@ -14,6 +14,7 @@ export async function getHero() {
 slug,
     client,
     tags[]->,
+   
     "firstImage": imagesGallery[0].asset->{
         url,
       
@@ -62,6 +63,7 @@ export async function getTag() {
 export async function getProjects() {
   return client.fetch(
     groq`*[_type == 'projets']{..., tags[]->,
+     tagsSUB[]->,
      "firstImage": imagesGallery[0].asset->{
         url,
       
@@ -86,6 +88,7 @@ export async function getProjectBySlug(slug) {
     *[_type == 'projets' && slug.current == $slug]{
       ...,
       "tags": tags[]->,
+      "tagsSUB": tagsSUB[]->,
     
     }`, 
     { slug }  // Passing the slug as a parameter to the query

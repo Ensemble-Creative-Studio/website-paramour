@@ -163,7 +163,11 @@ header a.active {
   font-weight: 300;
   line-height: 84%; /* 42px */
   letter-spacing: -1.5px;
+  transition: 0.3s all;
   text-transform: uppercase;
+}
+.notselected:hover{
+  color: #474747;
 }
 
 /* Credit */
@@ -307,7 +311,7 @@ max-width: 120ch;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   column-gap: 2.5rem;
-
+min-height: 700px;
 }
 .bigName{
   color: var(--text-grey, #474747);
@@ -327,16 +331,33 @@ text-transform: uppercase;
   
 /* D/Filters/Serif */
 
-font-size: 12rem;
-line-height: 87%; /* 104.4px */
+font-size: clamp(8rem, 7vw,12rem);
+line-height: 92%; /* 104.4px */
 text-transform: uppercase;
 }
 .notselected{
-  font-size: 13rem;
+  font-size: clamp(8rem, 8vw,13rem);
   font-weight: 300;
-  line-height: 80%; /* 104.24px */
+  line-height: 85%; /* 104.24px */
   letter-spacing: -3.909px;
   text-transform: uppercase;
+  }
+  header a:hover{
+    color: #616161;
+  }
+  header a{
+    /* transition: 0.3s color; */
+
+  }
+  header a.active:hover{
+    color: #474747;
+    transition: 0.3s color;
+  }
+  .videoHeight{
+    height: 75vh;
+  }
+  .flex2{
+    flex: 2.5;
   }
 }
 
@@ -350,3 +371,8 @@ text-transform: uppercase;
   visibility: visible;
   transition: opacity 350ms ease, visibility 0s ease 0s;
 }
+
+
+
+
+
