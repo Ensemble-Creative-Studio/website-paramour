@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import FadingImage from '@/components/utils/FadeInImage';
-function RandomJustifyImagePair({ firstImage, secondImage, alt, urlLoop }) {
+function RandomJustifyImagePair({ firstImage, secondImage, alt, urlLoop,showOnlyFirstImage }) {
   const [justifyFirst, setJustifyFirst] = useState('justify-start');
   const [firstImageWidth, setFirstImageWidth] = useState('w-1/2');
   const [secondImageWidth, setSecondImageWidth] = useState('w-1/2');
@@ -34,7 +34,6 @@ function RandomJustifyImagePair({ firstImage, secondImage, alt, urlLoop }) {
 
   return (
     <div className={`flex flex-col ${isFlexColReverse ? 'flex-col-reverse' : 'flex-col'} pt-16 pb-48 ${gap}`}>
-      {/* Applied random gap and flex direction */}
       {urlLoop ? (
         // Render the video if urlLoop is provided
         <div className={`${justifyFirst} flex w-full h-auto`}>
@@ -44,9 +43,8 @@ function RandomJustifyImagePair({ firstImage, secondImage, alt, urlLoop }) {
           </video>
         </div>
       ) : (
-        // Render the image if urlLoop is not provided
-    
-          <FadingImage
+        // Render the firstImage if urlLoop is not provided
+        <FadingImage
             src={firstImage}
             alt={alt}
             className={`${justifyFirst} flex w-full h-auto`}
@@ -54,11 +52,12 @@ function RandomJustifyImagePair({ firstImage, secondImage, alt, urlLoop }) {
             width={1000}
             height={1000}
           />
-     
       )}
-   
+
+      {/* Render the secondImage if showOnlyFirstImage is false */}
+      {!showOnlyFirstImage && (
         <FadingImage className={`${justifyFirst === 'justify-start' ? 'justify-end' : 'justify-start'} flex w-full h-auto`} src={secondImage} alt={alt} style={{ width: secondImageWidth }} width={1000} height={1000} />
-   
+      )}
     </div>
   );
 }

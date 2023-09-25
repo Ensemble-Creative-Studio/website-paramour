@@ -33,7 +33,7 @@ export default async function Home() {
             <div className="romie font-light uppercase text-center text-h1-mobile pt-48 pb-1 ">
               Our Client
             </div>
-            <ClientList clientData={clientData} fontSize='bigName' />
+            <ClientList clientData={clientData} fontSize='credits-sans' />
             <Footer footerData={footerData} pageLegalData={pageLegalData} />
           </div>
         </main>

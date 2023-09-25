@@ -10,11 +10,11 @@ export default function ClientList({ clientData, fontSize }) {
             <Link className="hover" href={`/works/${client.slug.current}`}>
               <h2 className={`everest uppercase portable-h1 text-center pb-1 ${fontSize}`}>
                 {index === clientData[0].clients.length - 1
-               ? `${client.client}.`
-               : `${client.client},`}
+               ? `${client.client}`
+               : `${client.client}`}
               </h2>
             </Link>
-            <RandomClientGrid image={client.firstImage.url} />
+            <RandomClientGrid image={client.firstImage?.url} />
           </div>
         </div>
       ))}

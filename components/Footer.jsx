@@ -37,12 +37,12 @@ export default function Footer({ footerData, pageLegalData }) {
           </h3>
           {pageLegalData.map((page, index) => (
             <div key={index}>
-              <Link className="itemFooter grey" href={page.slug.current}>
+              <Link className="itemFooterSmaller" href={page.slug.current}>
                 {page.titre}
               </Link>
             </div>
           ))}
-          <Link className="itemFooter grey" href="https://ensemble.ooo">
+          <Link className="itemFooterSmaller " href="https://ensemble.ooo">
             Site by ensemble.ooo
           </Link>
         </div>

@@ -129,6 +129,16 @@ header a.active {
   letter-spacing: 0.347px;
   text-transform: uppercase;
 }
+.menuFooterSmaller {
+  font-family: "Romie";
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 500;
+  color: black;
+  line-height: 86%; /* 14.938px */
+  letter-spacing: 0.347px;
+  text-transform: uppercase;
+}
 .itemFooter {
   color: var(--black, #000);
   font-family: "TWKEverett-Medium";
@@ -136,6 +146,18 @@ header a.active {
   /* D/Menu/Sans */
 
   font-size: 1.6rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 120%; /* 14.56px */
+  text-transform: uppercase;
+}
+.itemFooterSmaller {
+  color: var(--black, #000);
+  font-family: "TWKEverett-Medium";
+
+  /* D/Menu/Sans */
+
+  font-size: 1rem;
   font-style: normal;
   font-weight: 500;
   line-height: 120%; /* 14.56px */
@@ -311,7 +333,7 @@ max-width: 120ch;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   column-gap: 2.5rem;
-min-height: 700px;
+min-height: 900px;
 }
 .bigName{
   color: var(--text-grey, #474747);
@@ -376,3 +398,6 @@ text-transform: uppercase;
 
 
 
+.scaling{
+  transform: scale(3);
+}

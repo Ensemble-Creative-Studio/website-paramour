@@ -1,4 +1,6 @@
 'use client';
+import "../../bo.css";
+
 import { useLenis } from '@studio-freight/react-lenis';
 import { useEffect } from 'react'; // Import useEffect
 
@@ -13,5 +15,12 @@ export default function StudioPage() {
   // Call lenis.destroy() when the component unmounts
 
 
-  return <NextStudio config={config} />;
-}
+
+  return (
+    <div>
+      <div className='py-4' href="/">
+        <a  href='/'className="p-2 ml-2 border my-4 mix-blend-difference text-white">Go to website</a>
+      </div>
+      <NextStudio config={config} />
+    </div>
+  );}

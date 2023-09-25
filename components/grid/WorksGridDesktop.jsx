@@ -143,18 +143,35 @@ const Project = ({ project, index, tags, startColumn, span, position }) => {
 
 const ProjectMedia = ({ project, index }) => {
   if (index === 0) {
-    return (
-      <div className='relative h-auto'>
-        {hasVideos(project) ? (
+    if (!project.firstImage && hasVideos(project)) { // Check if there's no firstImage and there are videos.
+      return (
+        <div className='relative h-auto'>
           <video autoPlay playsInline loop muted className="w-full h-full">
             <source src={project.videosGallery[0].urlLoop} type="video/mp4" />
           </video>
-        ) : (
-          <FadingImage  src={project.firstImage.url} alt="Your Image" width={1000} height={1000} />
-        )}
-      </div>
-    );
-  } else {
+          {project.videosGallery[1] && (
+            <video autoPlay playsInline loop muted className="w-full h-full">
+              <source src={project.videosGallery[1].urlLoop} type="video/mp4" />
+            </video>
+          )}
+        </div>
+      );
+    } else if (hasVideos(project)) { // If there's a firstImage but there are videos, display the first video.
+      return (
+        <div className='relative h-auto'>
+          <video autoPlay playsInline loop muted className="w-full h-full">
+            <source src={project.videosGallery[0].urlLoop} type="video/mp4" />
+          </video>
+        </div>
+      );
+    } else { // If there are no videos, just display the first image.
+      return (
+        <div className='relative h-auto'>
+          <FadingImage src={project.firstImage?.url} alt="Your Image" width={1000} height={1000} />
+        </div>
+      );
+    }
+  } else { // If index is not 0
     return hasVideos(project) ? (
       <FadingImage src={project.firstImage?.url} alt="Your Image" width={1000} height={1000} />
     ) : (
@@ -164,13 +181,17 @@ const ProjectMedia = ({ project, index }) => {
 };
 
 
+
 const isWideOrVideo = (project) => {
   return hasVideos(project) || isWideImage(project);
 };
 
 const hasVideos = project => project.videosGallery && project.videosGallery.length > 0;
 
-const isWideImage = project => project.firstImage.metadata.dimensions.aspectRatio >= 1;
+const isWideImage = project => {
+  if (!project.firstImage) return null;
+  return project.firstImage.metadata.dimensions.aspectRatio >= 1;
+};
 
 const randomValue = (max) => {
   return Math.floor(Math.random() * max) + 1;

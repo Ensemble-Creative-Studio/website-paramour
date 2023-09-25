@@ -60,7 +60,7 @@ export default function ViewAll({ projectData, isVisible, setIsVisible }) {
 const mergedItems = [];
 
 // Add all images first
-projectData[0].imagesGallery.forEach(image => {
+projectData[0].imagesGallery?.forEach(image => {
   mergedItems.push({ type: 'image', data: image });
 });
 

@@ -73,8 +73,23 @@ const CustomVideoPlayer = ({ src }) => {
 
   return (
     <div className='relative h-full'>
+        {!isPlaying && (
+        <div className='absolute flex h-full w-full justify-center items-center'>
+          <svg
+            className='scaling fill-white'
+            width="24"
+            height="24"
+            xmlns="http://www.w3.org/2000/svg"
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+          >
+            <path d="M23 12l-22 12v-24l22 12zm-21 10.315l18.912-10.315-18.912-10.315v20.63z" />
+          </svg>
+        </div>
+      )}
       <video
         ref={videoRef}
+        onClick={handlePlayPause}
         className="w-auto h-full z-20 object-bottom"
         onTimeUpdate={handleTimeUpdate}
         onEnded={handleVideoEnd}
@@ -84,7 +99,7 @@ const CustomVideoPlayer = ({ src }) => {
         Your browser does not support the video tag.
       </video>
       <div>
-        <div className='absolute flex md:gap-6 bottom-8 md:left-6 px-5 md:px-0  w-full md:w-auto justify-between '>
+        <div className='absolute controls flex md:gap-6 bottom-8 md:left-6 px-5 md:px-0  w-full md:w-auto justify-between '>
           <button className='playerButton' onClick={handlePlayPause}>
             {isPlaying ? 'Pause' : 'Play'}
           </button>

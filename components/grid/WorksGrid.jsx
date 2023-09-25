@@ -49,8 +49,9 @@ export default function WorksGrid({ filteredProject }) {
             ) : (
               <DelayLink  href={`/works/${project.slug.current}`}>
                 <RandomJustifyImagePair
+                showOnlyFirstImage={project.showOnlyFirstImage}
                   firstImage={project.firstImage.url}
-                  secondImage={project.secondImage.url}
+                  secondImage={project.secondImage?.url}
                   alt={project.client}
                   urlLoop={hasUrlLoop}
                 />
