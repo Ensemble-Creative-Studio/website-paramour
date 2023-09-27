@@ -59,7 +59,7 @@ export default function MiniHeader({ projectData }) {
         <div
           className="slideCount -z-20 relative menuFooter hidden md:block"
           id="slideCountDiv"
-        ></div>
+        >1/12</div>
         <div
           className="itemFooter grey cursor-pointer hidden md:block"
           onClick={handleViewAllClick}

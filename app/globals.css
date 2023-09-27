@@ -394,9 +394,17 @@ text-transform: uppercase;
   transition: opacity 350ms ease, visibility 0s ease 0s;
 }
 
+.LegalPage{
+  max-width: 800px;
+}
 
-
-
+.LegalPage ul li{
+  font-family: 'Romie';
+  text-transform: none;
+padding: 0.5 0rem;
+list-style: disc;
+margin-left: 1.5rem;
+}
 
 .scaling{
   transform: scale(3);
