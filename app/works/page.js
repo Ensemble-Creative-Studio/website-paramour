@@ -28,7 +28,7 @@ export default async function Work() {
           <TagProvider initialData={tagData}>
             <div>
               <Header />
-              <main className="almostWhite md:px-10">
+              <main className="almostWhite md:px-10 works">
                 <TagList />
                 <ProjectList />
                 <Footer footerData={footerData} pageLegalData={pageLegalData} />
