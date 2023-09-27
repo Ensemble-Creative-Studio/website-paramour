@@ -409,7 +409,7 @@ margin-left: 1.5rem;
 .scaling{
   transform: scale(3);
 }
-.works image{
+.works img{
   max-height: 700px;
   object-fit: contain;
 }
