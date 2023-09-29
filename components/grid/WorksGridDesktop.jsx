@@ -149,11 +149,11 @@ const ProjectMedia = ({ project, index }) => {
           <video autoPlay playsInline loop muted className="w-full h-full">
             <source src={project.videosGallery[0].urlLoop} type="video/mp4" />
           </video>
-          {project.videosGallery[1] && (
+          {/* {project.videosGallery[1] && (
             <video autoPlay playsInline loop muted className="w-full h-full">
               <source src={project.videosGallery[1].urlLoop} type="video/mp4" />
             </video>
-          )}
+          )} */}
         </div>
       );
     } else if (hasVideos(project)) { // If there's a firstImage but there are videos, display the first video.
