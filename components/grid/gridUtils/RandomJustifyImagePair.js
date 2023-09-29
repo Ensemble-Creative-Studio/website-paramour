@@ -2,7 +2,8 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import FadingImage from '@/components/utils/FadeInImage';
-function RandomJustifyImagePair({ firstImage, secondImage, alt, urlLoop,showOnlyFirstImage }) {
+
+function RandomJustifyImagePair({ firstImage, secondImage, alt, urlLoop, showOnlyFirstImage }) {
   const [justifyFirst, setJustifyFirst] = useState('justify-start');
   const [firstImageWidth, setFirstImageWidth] = useState('w-1/2');
   const [secondImageWidth, setSecondImageWidth] = useState('w-1/2');
@@ -10,18 +11,14 @@ function RandomJustifyImagePair({ firstImage, secondImage, alt, urlLoop,showOnly
   const [isFlexColReverse, setIsFlexColReverse] = useState(false); // Default flex direction
 
   useEffect(() => {
-    // Randomly select flex direction
     setIsFlexColReverse(Math.random() < 0.5);
-
     const randomJustify = Math.random() < 0.5 ? 'justify-start' : 'justify-end';
     setJustifyFirst(randomJustify);
 
     if (urlLoop) {
-      // If urlLoop is provided, set video width to be either 58% or 66%
       const videoWidths = ['58%', '66%'];
       setFirstImageWidth(videoWidths[Math.floor(Math.random() * videoWidths.length)]);
     } else {
-      // If urlLoop is not provided, set image width randomly as before
       const imageWidths = ['41%', '50%', '58%', '66%'];
       setFirstImageWidth(imageWidths[Math.floor(Math.random() * imageWidths.length)]);
     }
@@ -29,21 +26,18 @@ function RandomJustifyImagePair({ firstImage, secondImage, alt, urlLoop,showOnly
     const imageWidths = ['41%', '50%', '58%', '66%'];
     setSecondImageWidth(imageWidths[Math.floor(Math.random() * imageWidths.length)]);
     const gaps = ['gap-y-12', 'gap-y-16', 'gap-y-24'];
-    setGap(gaps[Math.floor(Math.random() * gaps.length)]); // Setting random gap
+    setGap(gaps[Math.floor(Math.random() * gaps.length)]);
   }, []);
 
   return (
     <div className={`flex flex-col ${isFlexColReverse ? 'flex-col-reverse' : 'flex-col'} pt-16 pb-48 ${gap}`}>
       {urlLoop ? (
-        // Render the video if urlLoop is provided
         <div className={`${justifyFirst} flex w-full h-auto`}>
-          <video autoPlay playsInline loop muted className="w-full h-full"  style={{ width: firstImageWidth }}>
+          <video autoPlay playsInline loop muted className="w-full h-full" style={{ width: firstImageWidth }}>
             <source src={urlLoop} type="video/mp4" />
-            {/* Add other video sources if needed */}
           </video>
         </div>
-      ) : (
-        // Render the firstImage if urlLoop is not provided
+      ) : firstImage && (
         <FadingImage
             src={firstImage}
             alt={alt}
@@ -54,8 +48,7 @@ function RandomJustifyImagePair({ firstImage, secondImage, alt, urlLoop,showOnly
           />
       )}
 
-      {/* Render the secondImage if showOnlyFirstImage is false */}
-      {!showOnlyFirstImage && (
+      {!showOnlyFirstImage && firstImage && (
         <FadingImage className={`${justifyFirst === 'justify-start' ? 'justify-end' : 'justify-start'} flex w-full h-auto`} src={secondImage} alt={alt} style={{ width: secondImageWidth }} width={1000} height={1000} />
       )}
     </div>
