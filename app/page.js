@@ -24,9 +24,9 @@ export default async function Home() {
     <Layout>
       <div className="">
         <Header />
-        <main>
+        <main className="">
           <Hero heroData={heroData} />
-          <div className=" padding-top-screen relative almostWhite md:px-10">
+          <div className=" padding-top-screen relative almostWhite md:px-10 home">
             <BigSentence heroData={heroData} />
 
             <HomeGridComponent heroData={heroData} />

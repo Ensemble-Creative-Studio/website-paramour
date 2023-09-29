@@ -65,7 +65,7 @@ export default {
       description:
         "Image size should be < 5Mo, the first or the 2 first image will be used as the project thumbnail",
       of: [{ type: "image" }],
-      validation: (Rule) => Rule.required(),
+      // validation: (Rule) => Rule.required(),
     },
     {
       name: "showOnlyFirstImage",

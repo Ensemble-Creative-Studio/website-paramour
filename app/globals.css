@@ -409,7 +409,7 @@ margin-left: 1.5rem;
 .scaling{
   transform: scale(3);
 }
-.works img{
+.works img, .works video,.home img, .home video{
   max-height: 700px;
   object-fit: contain;
 }

@@ -5,9 +5,15 @@ import DelayLink from '../utils/DelayLink';
 import FadingImage from '../utils/FadeInImage';
 import FixedMiddleComponent from './FixedMiddleComponent';
 import { CurrentTagContext } from '../utils/CurrentTagContext';
-import { useContext } from 'react';
+import { useContext,useEffect } from 'react';
 
 export default function WorksGridDesktop({ filteredProject }) {
+  const [useFirstSet, setUseFirstSet] = useState(true); // starts with first set
+
+  useEffect(() => {
+    // toggle the set for the next render
+    setUseFirstSet(prev => !prev);
+  }, []); // T
   const { currentTag } = useContext(CurrentTagContext);
 
   // Check if ALL is selected
@@ -22,7 +28,7 @@ export default function WorksGridDesktop({ filteredProject }) {
     <>
       {projectsToDisplay.map((project, index) => (
         <div className="gridProjects h-screen" key={index}>
-          <ProjectRow project={project} showOnlyFirstImage={project.showOnlyFirstImage} />
+          <ProjectRow project={project} showOnlyFirstImage={project.showOnlyFirstImage} useFirstSet={useFirstSet} />
         </div>
       ))}
     </>
@@ -30,7 +36,7 @@ export default function WorksGridDesktop({ filteredProject }) {
 }
 
 
-const ProjectRow = ({ project, showOnlyFirstImage }) => {
+const ProjectRow = ({ project, showOnlyFirstImage,useFirstSet }) => {
 
   let tags;
 
@@ -53,13 +59,15 @@ const ProjectRow = ({ project, showOnlyFirstImage }) => {
   const [secondPosition, setSecondPosition] = useState(() => decideItemPosition(1, firstPosition));
 
   if (showOnlyFirstImage) {
+    const useFirstSet = Math.random() < 0.5;
+
     return (
       <Project 
         project={project} 
         index={0}
-        startColumn={firstStart}
-        span={firstSpan}
-        position={firstPosition}
+        startColumn={useFirstSet ? firstStart : secondStart}
+        span={useFirstSet ? firstSpan : secondSpan}
+        position={useFirstSet ? firstPosition : secondPosition}
         tags={tags}
       />
     );
@@ -222,25 +230,31 @@ const randomValue = (max) => {
   return Math.floor(Math.random() * max) + 1;
 }
 
-const randomSpan = (isWideOrVideoBool, showOnlyFirstImage = false) => {
+const randomSpan = (isWideOrVideoBool, showOnlyFirstImage ) => {
   if (showOnlyFirstImage) {
-    return [4, 5][Math.floor(Math.random() * 2)];  // Either span 4 or 5
+    
+    if (isWideOrVideoBool) {
+      return [4, 5, 6, 7][Math.floor(Math.random() * 4)]; // Span can be 4, 5, 6, or 7
+    }
+    return 3; // Only 4 if isWideOrVideoBool is false
   }
-  const spans = isWideOrVideoBool ? [4, 5] : [3, 4];
-  return spans[Math.floor(Math.random() * spans.length)];
+
+  else{
+    const spans = isWideOrVideoBool ? [4, 5] : [3, 4];
+    return spans[Math.floor(Math.random() * spans.length)];
+  }
+
 }
 
 
-const randomStartColumn = (index, firstSpan = 0, showOnlyFirstImage = false) => {
+const randomStartColumn = (index, firstSpan , showOnlyFirstImage ) => {
   if (showOnlyFirstImage) {
-    console.log('here')
-    // If span is 4 and should end at column 12, it should start at column 8
-    // If span is 5 and should end at column 12, it should start at column 7
-    const endStarts = firstSpan === 4 ? [8] : [7, 8];
-    // Either start at 1 or 2, or use the computed starting column for ending at 11 or 12
-    return [1, 2, ...endStarts][Math.floor(Math.random() * 3)];
+        // Calculate start column based on the span to ensure it doesn't exceed the 12th column
+        const startColumn = 13 - firstSpan ; 
+        return startColumn;
   }
-  if (index === 0) {
+  if (index === 0 && !showOnlyFirstImage) {
+
     return randomValue(2);
   } else {
     return 7 + randomValue(2);
