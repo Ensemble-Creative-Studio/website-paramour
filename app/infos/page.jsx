@@ -34,7 +34,7 @@ export default async function Infos() {
               <MedieumSentence heroData={heroData[0].serviceText} />
             </div>
             <div className="romie font-light uppercase text-center text-h1-mobile  credits-serif pt-48 md:pt-56 pb-1 ">
-              Our Client
+              Our Clients
             </div>
             <ClientList clientData={clientData} fontSize='credits-sans' />
 
