@@ -151,30 +151,37 @@ const Project = ({ project, index, tags, startColumn, span, position }) => {
 
 const ProjectMedia = ({ project, index }) => {
   if (index === 0) {
-    if (hasVideos(project)) { // Check if there's no firstImage and there are videos.
+    if (hasVideos(project)) {
       return (
         <div className='relative h-auto'>
-          <video  key={project.videosGallery[0].urlLoop} autoPlay playsInline loop muted className="w-full h-full">
+          <video key={project.videosGallery[0].urlLoop} autoPlay playsInline loop muted className="w-full h-full">
             <source src={project.videosGallery[0].urlLoop} type="video/mp4" />
           </video>
-          {/* {project.videosGallery[1] && (
-            <video autoPlay playsInline loop muted className="w-full h-full">
-              <source src={project.videosGallery[1].urlLoop} type="video/mp4" />
-            </video>
-          )} */}
         </div>
       );
-    } else { // If there are no videos, just display the first image.
+    } else {
       return (
         <div className='relative h-auto'>
           <FadingImage src={project.firstImage?.url} alt="Your Image" width={1000} height={1000} />
         </div>
       );
     }
-  } else { // If index is not 0
-    return hasVideos(project) ? (
-      <FadingImage src={project.firstImage?.url} alt="Your Image" width={1000} height={1000} />
-    ) : (
+  } else if (index === 1) {
+    if (!project.firstImage && project.videosGallery[1]) {
+      return (
+        <div className='relative h-auto'>
+          <video autoPlay playsInline loop muted className="w-full h-full">
+            <source src={project.videosGallery[1].urlLoop} type="video/mp4" />
+          </video>
+        </div>
+      );
+    } else {
+      return (
+        <FadingImage src={project.firstImage?.url} alt="Your Image" width={1000} height={1000} />
+      );
+    }
+  } else {
+    return (
       <FadingImage src={project.secondImage?.url} alt="Your Image" width={1000} height={1000} />
     );
   }
