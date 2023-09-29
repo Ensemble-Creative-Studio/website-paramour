@@ -234,7 +234,7 @@ const randomSpan = (isWideOrVideoBool, showOnlyFirstImage ) => {
   if (showOnlyFirstImage) {
     
     if (isWideOrVideoBool) {
-      return [4, 5, 6, 7][Math.floor(Math.random() * 4)]; // Span can be 4, 5, 6, or 7
+      return [ 6, 7,8,9][Math.floor(Math.random() * 4)]; // Span can be 4, 5, 6, or 7
     }
     return 3; // Only 4 if isWideOrVideoBool is false
   }

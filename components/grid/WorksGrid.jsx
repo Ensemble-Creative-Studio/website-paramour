@@ -19,7 +19,7 @@ export default function WorksGrid({ filteredProject }) {
   return (
     <div>
       {projectsToDisplay.map((project, index) => {
-        const isWide = project.firstImage.metadata.dimensions.aspectRatio >= 1;
+        const isWide = project.firstImage?.metadata.dimensions.aspectRatio >= 1;
 
         let tags;
 
@@ -50,7 +50,7 @@ export default function WorksGrid({ filteredProject }) {
               <DelayLink  href={`/works/${project.slug.current}`}>
                 <RandomJustifyImagePair
                 showOnlyFirstImage={project.showOnlyFirstImage}
-                  firstImage={project.firstImage.url}
+                  firstImage={project.firstImage?.url}
                   secondImage={project.secondImage?.url}
                   alt={project.client}
                   urlLoop={hasUrlLoop}
