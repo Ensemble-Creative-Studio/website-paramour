@@ -143,10 +143,10 @@ const Project = ({ project, index, tags, startColumn, span, position }) => {
 
 const ProjectMedia = ({ project, index }) => {
   if (index === 0) {
-    if (!project.firstImage && hasVideos(project)) { // Check if there's no firstImage and there are videos.
+    if (hasVideos(project)) { // Check if there's no firstImage and there are videos.
       return (
         <div className='relative h-auto'>
-          <video autoPlay playsInline loop muted className="w-full h-full">
+          <video  key={project.videosGallery[0].urlLoop} autoPlay playsInline loop muted className="w-full h-full">
             <source src={project.videosGallery[0].urlLoop} type="video/mp4" />
           </video>
           {/* {project.videosGallery[1] && (
@@ -154,14 +154,6 @@ const ProjectMedia = ({ project, index }) => {
               <source src={project.videosGallery[1].urlLoop} type="video/mp4" />
             </video>
           )} */}
-        </div>
-      );
-    } else if (hasVideos(project)) { // If there's a firstImage but there are videos, display the first video.
-      return (
-        <div className='relative h-auto'>
-          <video autoPlay playsInline loop muted className="w-full h-full">
-            <source src={project.videosGallery[0].urlLoop} type="video/mp4" />
-          </video>
         </div>
       );
     } else { // If there are no videos, just display the first image.
@@ -180,6 +172,39 @@ const ProjectMedia = ({ project, index }) => {
   }
 };
 
+// const ProjectMedia = ({ project, index }) => {
+//   if (index === 0) {
+//     console.log(project)
+    
+//     if ( hasVideos(project)) { // Check if there's no firstImage and there are videos.
+//       return (
+//         <div className='relative h-auto'>
+//           <video key={project.videosGallery[0].urlLoop} autoPlay playsInline loop muted className="w-full h-full">
+//             <source src={project.videosGallery[0].urlLoop} type="video/mp4" />
+//           </video>
+//           <p>{project.videosGallery[0].urlLoop}</p>
+//           {/* {project.videosGallery[1] && (
+//             <video autoPlay playsInline loop muted className="w-full h-full">
+//               <source src={project.videosGallery[1].urlLoop} type="video/mp4" />
+//             </video>
+//           )} */}
+//         </div>
+//       );
+//     }  else { // If there are no videos, just display the first image.
+//       return (
+//         <div className='relative h-auto'>
+//           <FadingImage src={project.firstImage?.url} alt="Your Image" width={1000} height={1000} />
+//         </div>
+//       );
+//     }
+//   } else { // If index is not 0
+//     return hasVideos(project) ? (
+//       <FadingImage src={project.firstImage?.url} alt="Your Image" width={1000} height={1000} />
+//     ) : (
+//       <FadingImage src={project.secondImage?.url} alt="Your Image" width={1000} height={1000} />
+//     );
+//   }
+// };
 
 
 const isWideOrVideo = (project) => {
@@ -208,6 +233,7 @@ const randomSpan = (isWideOrVideoBool, showOnlyFirstImage = false) => {
 
 const randomStartColumn = (index, firstSpan = 0, showOnlyFirstImage = false) => {
   if (showOnlyFirstImage) {
+    console.log('here')
     // If span is 4 and should end at column 12, it should start at column 8
     // If span is 5 and should end at column 12, it should start at column 7
     const endStarts = firstSpan === 4 ? [8] : [7, 8];
