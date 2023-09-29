@@ -76,7 +76,7 @@ export default function TagList() {
   const wrappedTagElements = windowWidth >= 768 ? wrapSpansWithDivs(tagElements) : tagElements;
 
   return (
-    <div className="h-screen flex justify-center items-center md:px-10">
+    <div className="h-screen flex justify-center items-center ">
       <div className="flex flex-col text-center flex-wrap">
         {wrappedTagElements}
       </div>

@@ -180,7 +180,7 @@ projectData[0].videosGallery?.forEach(video => {
           return (
             <div
               key={item.data._key}
-              className={`flex items-end justify-center relative keen-slider__slide number-slide${index}`}
+              className={`flex items-center justify-center relative keen-slider__slide number-slide${index}`}
             >
               <div
                 onClick={(e) => e.stopPropagation() || instanceRef.current?.next()}
@@ -202,7 +202,7 @@ projectData[0].videosGallery?.forEach(video => {
           return (
             <div
               key={item.data._key}
-              className={`flex items-end justify-center relative keen-slider__slide number-slide${index}`}
+              className={`flex items-center justify-center relative keen-slider__slide number-slide${index}`}
             >
               <div
                 onClick={(e) => e.stopPropagation() || instanceRef.current?.next()}

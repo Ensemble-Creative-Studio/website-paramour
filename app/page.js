@@ -30,8 +30,8 @@ export default async function Home() {
             <BigSentence heroData={heroData} />
 
             <HomeGridComponent heroData={heroData} />
-            <div className="romie font-light uppercase text-center text-h1-mobile pt-48 pb-1 ">
-              Our Client
+            <div className="romie font-light uppercase text-center text-h1-mobile  credits-serif pt-48 md:pt-56 pb-1 ">
+              Our Clients
             </div>
             <ClientList clientData={clientData} fontSize='credits-sans' />
             <Footer footerData={footerData} pageLegalData={pageLegalData} />

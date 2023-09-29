@@ -299,7 +299,7 @@ max-width: 120ch;
     transition: 0.6s ease all;
   }
   .heightSlider {
-    height: 89vh;
+    height: 75vh;
   }
   .keen-slider__slide {
     transition: opacity 0.3s ease-in-out;

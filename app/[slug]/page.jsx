@@ -23,7 +23,7 @@ export default async function Legal() {
       <Link className="itemFooter grey uppercase cursor-pointer leading-none" href="./">Close</Link>
 
       <main>
-        <h2 className="md:pt-24 pt-24 pb-12  projectTitle">{pageLegalData.titre}</h2>
+        <h2 className="md:pt-24 pt-24 pb-12  projectTitle">{pageLegalData?.titre}</h2>
 
         <ContactSentence footerData={pageLegalData.editionText} />
       </main>

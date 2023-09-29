@@ -32,7 +32,7 @@ export default function Footer({ footerData, pageLegalData }) {
           <ContactSentence footerData={footerData[0].SocialText} />
         </div>
         <div className=" text-center md:text-left md:flex-1">
-          <h3 className="pb-4 md:pb-8 uppercase menuFooter grey">
+          <h3 className="pb-4 md:pb-8 uppercase itemFooterSmaller grey">
             ©paramour {currentYear}
           </h3>
           {pageLegalData.map((page, index) => (

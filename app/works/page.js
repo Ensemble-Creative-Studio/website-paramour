@@ -28,10 +28,13 @@ export default async function Work() {
           <TagProvider initialData={tagData}>
             <div>
               <Header />
-              <main className="almostWhite md:px-10 works">
+              <main className="almostWhite  works">
                 <TagList />
+                <div className="md:px-10">
                 <ProjectList />
                 <Footer footerData={footerData} pageLegalData={pageLegalData} />
+                </div>
+                
               </main>
             </div>
           </TagProvider>
