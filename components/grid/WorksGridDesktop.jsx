@@ -177,7 +177,7 @@ const ProjectMedia = ({ project, index }) => {
       );
     } else {
       return (
-        <FadingImage src={project.firstImage?.url} alt="Your Image" width={1000} height={1000} />
+        <FadingImage src={project.secondImage?.url} alt="Your Image" width={1000} height={1000} />
       );
     }
   } else {
