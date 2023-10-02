@@ -170,7 +170,7 @@ const ProjectMedia = ({ project, index }) => {
     if (!project.firstImage && project.videosGallery[1]) {
       return (
         <div className='relative h-auto'>
-          <video autoPlay playsInline loop muted className="w-full h-full">
+          <video key={project.videosGallery[1].urlLoop} autoPlay playsInline loop muted className="w-full h-full">
             <source src={project.videosGallery[1].urlLoop} type="video/mp4" />
           </video>
         </div>
