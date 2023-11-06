@@ -33,7 +33,7 @@ function RandomJustifyImagePair({ firstImage, secondImage, alt, urlLoop, showOnl
     <div className={`flex flex-col ${isFlexColReverse ? 'flex-col-reverse' : 'flex-col'} pt-16 pb-48 ${gap}`}>
       {urlLoop ? (
         <div className={`${justifyFirst} flex w-full h-auto`}>
-          <video autoPlay playsInline loop muted className="w-full h-full" style={{ width: firstImageWidth }}>
+          <video key={urlLoop} autoPlay playsInline loop muted className="w-full h-full" style={{ width: firstImageWidth }}>
             <source src={urlLoop} type="video/mp4" />
           </video>
         </div>

@@ -55,6 +55,7 @@ export default function WorksGrid({ filteredProject }) {
                   alt={project.client}
                   urlLoop={hasUrlLoop}
                 />
+             
               </DelayLink>
             )}
           </div>
