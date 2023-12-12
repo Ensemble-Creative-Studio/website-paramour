@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { AnimatePresence } from "framer-motion";
 import Head from "next/head";
 import { ReactLenis, useLenis } from "@studio-freight/react-lenis";
-
+import Fathom from "./fathom";
 
 
 export default function RootLayout({ children, params }) {
@@ -26,7 +26,7 @@ export default function RootLayout({ children, params }) {
             name="description"
             content="Paramour is a paris based production agency dedicated to the fashion and lifestyle industries"
           />
-          <script
+          {/* <script
             dangerouslySetInnerHTML={{
               __html: `
                 (function(f, a, t, h, o, m){
@@ -41,13 +41,15 @@ export default function RootLayout({ children, params }) {
                 fathom('set', 'siteId', 'TGPHYDIK');
               `,
             }}
-          />
+          /> */}
         </head>
         <AnimatePresence initial={true}>
           <body key={params.slug} >
             {children}
           </body>
+          
         </AnimatePresence>
+        <Fathom />
       </html>
     </ReactLenis>
   );
