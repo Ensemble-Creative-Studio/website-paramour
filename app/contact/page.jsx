@@ -16,9 +16,9 @@ export default async function Contact() {
   const pageLegalData = await getPageLegal();
   return (
     <Layout>
-      <div className="">
+      <div className="pt-12 md:pt-0">
         <Header />
-        <main>
+        <main className="hidden md:block">
           <div className="z-10 relative almostWhite px-6 md:px-10">
             <div className="pt-48 flex justify-center pb-20 md:h-full md:pb-0 md:items-center md:w-full">
                 <Image
@@ -55,9 +55,9 @@ export default async function Contact() {
                 </div>
             </div>
 
-            <Footer footerData={footerData} pageLegalData={pageLegalData} />
           </div>
         </main>
+        <Footer footerData={footerData} pageLegalData={pageLegalData} />
       </div>
     </Layout>
   );
