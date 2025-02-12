@@ -22,7 +22,7 @@ const HeaderLink = ({ href, children }) => {
   };
 
   return (
-    <Link className={isActive ? "active" : ""} href={href}>
+    <Link className={`uppercase ${isActive ? "active" : ""}`} href={href}>
       {children}
     </Link>
   );

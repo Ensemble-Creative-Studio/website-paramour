@@ -1,6 +1,5 @@
 import Link from "next/link";
 import Image from "next/image";
-import urlBuilder from "@sanity/image-url";
 import ContactSentence from "./ContactSentence";
 import logo from "../public/Logo.svg";
 import { getCurrentYear } from "./utils/getYear";
