@@ -30,6 +30,9 @@ slug,
 export async function getInfos() {
   return client.fetch(groq`*[_type == 'infos']`);
 }
+export async function getContact() {
+    return client.fetch(groq`*[_type == 'contact']`);
+}
 export async function getFooter() {
   return client.fetch(groq`*[_type == 'footer']`);
 }
