@@ -1,11 +1,8 @@
-'use client';
 import "../../../bo.css";
-import { useEffect } from 'react';
 import { NextStudio } from 'next-sanity/studio';
 import config from '../../../../sanity.config';
 
 export default function StudioPage() {
-  // Lenis has been removed from the studio layout, so we don't need to destroy it anymore.
   
   return (
     <div>
