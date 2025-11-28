@@ -1,11 +1,11 @@
 'use client';
-import "../../bo.css";
+import "../../../bo.css";
 
 import { useLenis } from '@studio-freight/react-lenis';
 import { useEffect } from 'react'; // Import useEffect
 
 import { NextStudio } from 'next-sanity/studio';
-import config from '../../../sanity.config';
+import config from '../../../../sanity.config';
 
 export default function StudioPage() {
   const lenis = useLenis(({ scroll }) => {

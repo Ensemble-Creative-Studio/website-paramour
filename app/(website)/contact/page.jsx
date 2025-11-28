@@ -1,4 +1,4 @@
-import "../globals.css";
+import "../../globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Layout from "@/components/transition/PageTransition";
@@ -6,8 +6,8 @@ import {
     getContact,
   getFooter,
   getPageLegal,
-} from "../../sanity/sanity-util";
-import logo from "../../public/Logo.svg";
+} from "@/sanity/sanity-util";
+import logo from "../../../public/Logo.svg";
 import Image from "next/image";
 import { PortableText } from "@portabletext/react";
 export default async function Contact() {

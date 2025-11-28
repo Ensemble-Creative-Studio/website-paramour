@@ -1,9 +1,9 @@
-import "../../globals.css";
+import "../../../globals.css";
 
 import MiniHeader from "@/components/MiniHeader";
 import GalleryComponent from "@/components/gallery/GalleryComponent";
 import ProjectInfoOverlay from "@/components/gallery/ProjectInfoOverlay";
-import { getProjectBySlug } from "../../../sanity/sanity-util";
+import { getProjectBySlug } from "@/sanity/sanity-util";
 import LayoutNoFade from "@/components/transition/PageTransitionNoFade";
 import Layout from "@/components/transition/PageTransition";
 import { SliderProvider } from "@/components/gallery/context/SliderContext";

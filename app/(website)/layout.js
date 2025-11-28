@@ -1,7 +1,7 @@
-import ClientLayout from "./ClientLayout";
+import ClientLayout from "../ClientLayout";
 import Script from "next/script";
 import { getHero } from "@/sanity/sanity-util";
-import "./globals.css"; // Assurez-vous d'importer vos styles globaux ici si ce n'est pas déjà fait ailleurs
+import "../globals.css"; 
 
 export async function generateMetadata() {
   const homeData = await getHero();
@@ -45,3 +45,4 @@ export default function RootLayout({ children, params }) {
     </html>
   );
 }
+

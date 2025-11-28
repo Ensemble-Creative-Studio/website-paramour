@@ -1,43 +1,39 @@
 import "../globals.css";
+import Image from "next/image";
 import Hero from "@/components/Hero";
-import MedieumSentence from "@/components/MediumSentence";
+import BigSentence from "@/components/BigSentence";
 import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+import FeaturedGridHome from "@/components/grid/FeaturedClientHome";
+import HomeGridComponent from "@/components/grid/gridUtils/HomeGridComponent";
 import ClientList from "@/components/ClientList";
+import Footer from "@/components/Footer";
 import Layout from "@/components/transition/PageTransition";
 import {
-  getInfos,
+  getHero,
+  getClient,
   getFooter,
   getPageLegal,
-  getClient,
-} from "../../sanity/sanity-util";
-export default async function Infos() {
-  const heroData = await getInfos();
-  ``;
-  const footerData = await getFooter();
+} from "@/sanity/sanity-util";
+export default async function Home() {
+  const heroData = await getHero();
   const clientData = await getClient();
-
+  const footerData = await getFooter();
   const pageLegalData = await getPageLegal();
+
   return (
     <Layout>
       <div className="">
         <Header />
-        <main>
+        <main className="">
           <Hero heroData={heroData} />
-          <div className="z-10 padding-top-screen relative almostWhite px-6 md:px-10">
-            <div className="pt-32 pb-16 md:pt-48 md:pb-24">
-              <h3 className="credits-sans">ABOUT</h3>
-              <MedieumSentence heroData={heroData[0].aboutText} />
-            </div>
-            <div className="pt-32 pb-16 md:pt-48">
-              <h3 className="credits-sans">SERVICES</h3>
-              <MedieumSentence heroData={heroData[0].serviceText} />
-            </div>
+          <div className=" padding-top-screen relative almostWhite md:px-10 home">
+            <BigSentence heroData={heroData} />
+
+            <HomeGridComponent heroData={heroData} />
             <div className="romie font-light uppercase text-center text-h1-mobile  credits-serif pt-48 md:pt-56 pb-1 ">
               Our Clients
             </div>
             <ClientList clientData={clientData} fontSize='credits-sans' />
-
             <Footer footerData={footerData} pageLegalData={pageLegalData} />
           </div>
         </main>

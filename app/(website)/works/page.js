@@ -1,5 +1,5 @@
 import React from "react";
-import "../globals.css";
+import "../../globals.css";
 import Header from "@/components/Header";
 import TagList from "@/components/TagList";
 import ProjectList from "@/components/ProjectList";
@@ -11,7 +11,7 @@ import {
   getProjects,
   getFooter,
   getPageLegal,
-} from "../../sanity/sanity-util";
+} from "@/sanity/sanity-util";
 import Footer from "@/components/Footer";
 import Layout from "@/components/transition/PageTransition";
 export default async function Work() {

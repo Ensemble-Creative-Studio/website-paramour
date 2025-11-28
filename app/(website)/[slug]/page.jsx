@@ -1,14 +1,12 @@
-"use client";
-import "../globals.css";
-import { usePathname } from "next/navigation";
+import "../../globals.css";
 import Link from "next/link";
 import ContactSentence from "@/components/ContactSentence";
 import Footer from "@/components/Footer";
 import Layout from "@/components/transition/PageTransition";
-import { getFooter, getPageLegal } from "../../sanity/sanity-util";
-export default async function Legal() {
-  const pathname = usePathname();
-  const url = pathname.split("/").pop();
+import { getFooter, getPageLegal } from "@/sanity/sanity-util";
+
+export default async function Legal({ params }) {
+  const url = params.slug;
   const footerData = await getFooter();
   const allPageLegalData = await getPageLegal();
 
@@ -25,7 +23,7 @@ export default async function Legal() {
       <main>
         <h2 className="md:pt-24 pt-24 pb-12  projectTitle">{pageLegalData?.titre}</h2>
 
-        <ContactSentence footerData={pageLegalData.editionText} />
+        <ContactSentence footerData={pageLegalData?.editionText} />
       </main>
     </div>
     </Layout>
