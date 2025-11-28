@@ -1,3 +1,5 @@
+'use client';
+
 import "../../../bo.css";
 import { NextStudio } from 'next-sanity/studio';
 import config from '../../../../sanity.config';
