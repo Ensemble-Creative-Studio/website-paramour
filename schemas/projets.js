@@ -2,21 +2,43 @@ import {
   orderRankField,
   orderRankOrdering,
 } from "@sanity/orderable-document-list";
+import { EditIcon, RobotIcon } from '@sanity/icons'
 
 export default {
   type: "document",
   name: "projets",
   title: "Projets",
   orderings: [orderRankOrdering],
+  groups: [
+    {
+        name: "content",
+        title: "Contenu",
+        icon: EditIcon,
+        default: true
+    },
+    {
+        name: "seo",
+        title: "SEO",
+        icon: RobotIcon
+    }
+],
   fields: [
     {
+      name: "seo",
+      title: "SEO",
+      group: "seo",
+      type: "seoFields"
+    },
+    {
       name: "client",
+      group: "content",
       type: "string",
       title: "Client",
       required: true,
     },
     {
       name: "tags",
+      group: "content",
       type: "array",
       title: "Categories",
       description:'Select a category ONLY if it is a "all" project',
@@ -30,6 +52,7 @@ export default {
     },
     {
       name: "tagsSUB",
+      group: "content",
       type: "array",
       title: "Sub categories",
       description: "Select ONLY one sub category if it is a child project",
@@ -43,6 +66,7 @@ export default {
     },
     {
       title: "Slug",
+      group: "content",
       name: "slug",
       type: "slug",
       description: "click on generate to auto-fill, if this is a sub category add something after client name like '-photo'",
@@ -55,20 +79,32 @@ export default {
     orderRankField({ type: "projets", name: "name" }),
     {
       name: "informationsBlock",
+      group: "content",
       type: "blockContent",
       title: "Infos",
     },
     {
       name: "imagesGallery",
+      group: "content",
       title: "Images gallery",
       type: "array",
       description:
         "Image size should be < 5Mo, the first or the 2 first image will be used as the project thumbnail",
-      of: [{ type: "image" }],
+      of: [{ 
+        type: "image",
+        fields: [
+          {
+            name: 'alt',
+            type: 'string',
+            title: 'Alternative text',
+          }
+        ]
+      }],
       // validation: (Rule) => Rule.required(),
     },
     {
       name: "showOnlyFirstImage",
+      group: "content",
       type: "boolean",
       title: "Show only the first image",
       description:
@@ -76,6 +112,7 @@ export default {
     },
     {
       name: "videosGallery",
+      group: "content",
       title: "Videos gallery",
       type: "array",
       description: "Video links for looping and full videos.",
@@ -84,6 +121,11 @@ export default {
           type: "object",
           title: "VideoItem",
           fields: [
+            {
+              name: "alt",
+              type: "string",
+              title: "Alternative text",
+            },
             {
               name: "urlLoop",
               type: "url",

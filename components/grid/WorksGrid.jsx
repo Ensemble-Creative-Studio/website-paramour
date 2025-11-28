@@ -40,7 +40,7 @@ export default function WorksGrid({ filteredProject }) {
                 <div className="relative  w-full h-auto pt-16 pb-48">
                   <FadingImage
                     src={project.firstImage.url}
-                    alt="Your Image"
+                    alt={project.firstImage?.alt || project.client}
                     width={1000}
                     height={1000}
                   />
@@ -53,6 +53,8 @@ export default function WorksGrid({ filteredProject }) {
                   firstImage={project.firstImage?.url}
                   secondImage={project.secondImage?.url}
                   alt={project.client}
+                  firstImageAlt={project.firstImage?.alt}
+                  secondImageAlt={project.secondImage?.alt}
                   urlLoop={hasUrlLoop}
                 />
              

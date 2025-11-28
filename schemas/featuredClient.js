@@ -15,4 +15,11 @@ export default {
     },
   ],
   
+  preview: {
+    prepare() {
+      return {
+        title: "Featured Clients",
+      };
+    },
+  },
 };

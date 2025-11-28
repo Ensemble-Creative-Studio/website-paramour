@@ -5,20 +5,27 @@ export async function getHero() {
   return client.fetch(groq`
     *[_type == 'homePage']{
       _type,
-
-  imageOrUrl,
-  bigSentence,
+      "seo": {
+        "seoTitle": seo.seoTitle,
+        "seoDescription": seo.seoDescription,
+        "seoImage": {
+            "asset": seo.seoImage.asset->,
+            "alt": seo.seoImage.alt
+        }
+      },
+      imageOrUrl,
+      bigSentence,
   
   "projects": projects[]->{
     ...,
-slug,
+    slug,
     client,
     tags[]->,
    
-    "firstImage": imagesGallery[0].asset->{
-        url,
-      
-        metadata
+    "firstImage": imagesGallery[0] {
+        "url": asset->url,
+        "metadata": asset->metadata,
+        alt
     }
   },
 
@@ -46,8 +53,9 @@ export async function getClient() {
         slug,
         client,
         tags[]->,
-        "firstImage": imagesGallery[0].asset->{
-          url,
+        "firstImage": imagesGallery[0] {
+          "url": asset->url,
+          alt
         }
       },
     }
@@ -67,20 +75,19 @@ export async function getProjects() {
   return client.fetch(
     groq`*[_type == 'projets']{..., tags[]->,
      tagsSUB[]->,
-     "firstImage": imagesGallery[0].asset->{
-        url,
-      
-        metadata
+     "firstImage": imagesGallery[0] {
+        "url": asset->url,
+        "metadata": asset->metadata,
+        alt
     },
-    "secondImage": imagesGallery[1].asset->{
-        url,
-      
-        metadata
+    "secondImage": imagesGallery[1] {
+        "url": asset->url,
+        "metadata": asset->metadata,
+        alt
     },
-    "videosLoop": videosGallery[]->{
+    "videosLoop": videosGallery[]{
       urlLoop,
-      
-      
+      alt
     },
     }|order(orderRank)`
   );
@@ -95,6 +102,12 @@ export async function getProjectBySlug(slug) {
     
     }`, 
     { slug }  // Passing the slug as a parameter to the query
+  );
+}
+
+export async function getProjectsSlugs() {
+  return client.fetch(
+    groq`*[_type == 'projets']{ slug, _updatedAt }`
   );
 }
 

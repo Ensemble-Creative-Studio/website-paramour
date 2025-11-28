@@ -35,6 +35,13 @@ export default {
               name: "image",
               type: "image",
               title: "Image",
+              fields: [
+                {
+                  name: 'alt',
+                  type: 'string',
+                  title: 'Alternative text',
+                }
+              ]
             },
             {
               name: "titre",

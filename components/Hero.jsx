@@ -35,7 +35,7 @@ export default function Hero({ heroData }) {
         <div className="w-screen h-screen ">
           <Image
             src={urlForImage(heroData[0].imageOrUrl.image.asset._ref)}
-            alt="Image"
+            alt={heroData[0].imageOrUrl.image.alt || "Hero image"}
             className="w-full object-cover h-full md:object-top hidden md:block"
             width={1200}
             height={1000}
@@ -43,7 +43,7 @@ export default function Hero({ heroData }) {
           />
           <Image
             src={urlForImage(heroData[0].imageOrUrl.imageMobile?.asset._ref)}
-            alt="Image"
+            alt={heroData[0].imageOrUrl.imageMobile?.alt || "Hero image mobile"}
             className="w-full object-cover h-full md:object-top md:hidden block"
             width={1200}
             height={1000}

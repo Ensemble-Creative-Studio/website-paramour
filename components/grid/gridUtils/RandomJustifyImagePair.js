@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import FadingImage from '@/components/utils/FadeInImage';
 
-function RandomJustifyImagePair({ firstImage, secondImage, alt, urlLoop, showOnlyFirstImage }) {
+function RandomJustifyImagePair({ firstImage, secondImage, alt, firstImageAlt, secondImageAlt, urlLoop, showOnlyFirstImage }) {
   const [justifyFirst, setJustifyFirst] = useState('justify-start');
   const [firstImageWidth, setFirstImageWidth] = useState('w-1/2');
   const [secondImageWidth, setSecondImageWidth] = useState('w-1/2');
@@ -40,7 +40,7 @@ function RandomJustifyImagePair({ firstImage, secondImage, alt, urlLoop, showOnl
       ) : firstImage && (
         <FadingImage
             src={firstImage}
-            alt={alt}
+            alt={firstImageAlt || alt}
             className={`${justifyFirst} flex w-full h-auto`}
             style={{ width: firstImageWidth }}
             width={1000}
@@ -49,7 +49,7 @@ function RandomJustifyImagePair({ firstImage, secondImage, alt, urlLoop, showOnl
       )}
 
       {!showOnlyFirstImage && firstImage && (
-        <FadingImage className={`${justifyFirst === 'justify-start' ? 'justify-end' : 'justify-start'} flex w-full h-auto`} src={secondImage} alt={alt} style={{ width: secondImageWidth }} width={1000} height={1000} />
+        <FadingImage className={`${justifyFirst === 'justify-start' ? 'justify-end' : 'justify-start'} flex w-full h-auto`} src={secondImage} alt={secondImageAlt || alt} style={{ width: secondImageWidth }} width={1000} height={1000} />
       )}
     </div>
   );

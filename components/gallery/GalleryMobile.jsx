@@ -27,7 +27,7 @@ export default function GalleryMobile({ projectData }) {
             <div key={image._key} className="mb-4">
               <FadingImage
                 src={urlForImage(image.asset._ref)}
-                alt="Image"
+                alt={image.alt || "Image"}
                 className="w-full object-cover h-full"
                 width={1000}
                 height={1000}

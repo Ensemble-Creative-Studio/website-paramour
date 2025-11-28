@@ -162,7 +162,7 @@ const ProjectMedia = ({ project, index }) => {
     } else {
       return (
         <div className='relative h-auto'>
-          <FadingImage src={project.firstImage?.url} alt="Your Image" width={1000} height={1000} />
+          <FadingImage src={project.firstImage?.url} alt={project.firstImage?.alt || project.client} width={1000} height={1000} />
         </div>
       );
     }
@@ -177,12 +177,12 @@ const ProjectMedia = ({ project, index }) => {
       );
     } else {
       return (
-        <FadingImage src={project.secondImage?.url} alt="Your Image" width={1000} height={1000} />
+        <FadingImage src={project.secondImage?.url} alt={project.secondImage?.alt || project.client} width={1000} height={1000} />
       );
     }
   } else {
     return (
-      <FadingImage src={project.secondImage?.url} alt="Your Image" width={1000} height={1000} />
+      <FadingImage src={project.secondImage?.url} alt={project.secondImage?.alt || project.client} width={1000} height={1000} />
     );
   }
 };

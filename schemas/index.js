@@ -10,5 +10,9 @@ import tag from './tag'
 import infos from './infos'
 import featuredClient from './featuredClient'
 import contact from './contact'
+import seoFields from './seo/seoField'
 
-export const schemaTypes = [blockContent,pet,headerinfo,homePage, passport, projets, footer, pageLegale, tag,infos, featuredClient, contact]
+const objects = [seoFields];
+
+
+export const schemaTypes = [blockContent,pet,headerinfo,homePage, passport, projets, footer, pageLegale, tag,infos, featuredClient, contact, ...objects]

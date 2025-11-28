@@ -195,7 +195,7 @@ projectData[0].videosGallery?.forEach(video => {
               <div className="heightSlider flex ">
                 <Image
                   src={urlForImage(item.data.asset._ref)}
-                  alt={`Slide ${index}`}
+                  alt={item.data.alt || `Slide ${index}`}
                   className="w-auto object-cover h-full "
                   width={1200}
                   height={1000}
