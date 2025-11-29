@@ -1,9 +1,8 @@
 
 import { defineConfig } from "sanity"
-import { deskTool } from "sanity/desk"
+import { structureTool } from "sanity/structure"
 import { visionTool } from "@sanity/vision"
 import { dashboardTool } from "@sanity/dashboard";
-import { vercelDeployTool } from 'sanity-plugin-vercel-deploy'
 
 import { schemaTypes } from "./schemas"
 import {apiVersion, dataset, projectId} from './sanity/env'
@@ -23,7 +22,7 @@ export default defineConfig({
   dataset,
 
   plugins: [
-    deskTool({
+    structureTool({
       structure: (S, context) =>
         S.list()
           .title("Content")
@@ -102,7 +101,6 @@ visionTool(),
  
       ]
     }),
-    vercelDeployTool(),
 
   ],
 
