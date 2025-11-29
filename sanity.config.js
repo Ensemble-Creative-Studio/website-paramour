@@ -5,10 +5,8 @@ import { visionTool } from "@sanity/vision"
 import { dashboardTool } from "@sanity/dashboard";
 
 import { schemaTypes } from "./schemas"
-import {apiVersion, dataset, projectId} from './sanity/env'
+import {dataset, projectId} from './sanity/env'
 import {orderableDocumentListDeskItem} from '@sanity/orderable-document-list'
-import {schema} from './sanity/schema'
-import { netlifyWidget } from "sanity-plugin-dashboard-widget-netlify";
 
 // Define the actions that should be available for singleton documents
 const singletonActions = new Set(["publish", "discardChanges", "restore"])
