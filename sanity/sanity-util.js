@@ -31,20 +31,20 @@ export async function getHero() {
 
     
     }
-  `);
+  `, {}, { next: { tags: ['homePage'] } });
 }
 
 export async function getInfos() {
-  return client.fetch(groq`*[_type == 'infos']`);
+  return client.fetch(groq`*[_type == 'infos']`, {}, { next: { tags: ['infos'] } });
 }
 export async function getContact() {
-    return client.fetch(groq`*[_type == 'contact']`);
+    return client.fetch(groq`*[_type == 'contact']`, {}, { next: { tags: ['contact'] } });
 }
 export async function getFooter() {
-  return client.fetch(groq`*[_type == 'footer']`);
+  return client.fetch(groq`*[_type == 'footer']`, {}, { next: { tags: ['footer'] } });
 }
 export async function getPageLegal() {
-  return client.fetch(groq`*[_type == 'pageFooter']`);
+  return client.fetch(groq`*[_type == 'pageFooter']`, {}, { next: { tags: ['pageFooter'] } });
 }
 export async function getClient() {
   const data = await client.fetch(groq`
@@ -59,7 +59,7 @@ export async function getClient() {
         }
       },
     }
-  `);
+  `, {}, { next: { tags: ['featuredClients'] } });
 
   // Sort the 'clients' array of each featuredClients document
   data.forEach(featuredClients => {
@@ -69,7 +69,7 @@ export async function getClient() {
   return data;
 }
 export async function getTag() {
-  return client.fetch(groq`*[_type == 'tag']|order(orderRank)`);
+  return client.fetch(groq`*[_type == 'tag']|order(orderRank)`, {}, { next: { tags: ['tag'] } });
 }
 export async function getProjects() {
   return client.fetch(
@@ -89,7 +89,7 @@ export async function getProjects() {
       urlLoop,
       alt
     },
-    }|order(orderRank)`
+    }|order(orderRank)`, {}, { next: { tags: ['projets'] } }
   );
 }
 export async function getProjectBySlug(slug) {
@@ -101,13 +101,14 @@ export async function getProjectBySlug(slug) {
       "tagsSUB": tagsSUB[]->,
     
     }`, 
-    { slug }  // Passing the slug as a parameter to the query
+    { slug },
+    { next: { tags: ['projets'] } }
   );
 }
 
 export async function getProjectsSlugs() {
   return client.fetch(
-    groq`*[_type == 'projets']{ slug, _updatedAt }`
+    groq`*[_type == 'projets']{ slug, _updatedAt }`, {}, { next: { tags: ['projets'] } }
   );
 }
 
